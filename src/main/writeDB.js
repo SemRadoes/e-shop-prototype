@@ -1,9 +1,15 @@
 
-const baseURL = "https://fakestoreapi.com/";
+const baseURLFakeStore = "https://fakestoreapi.com/";
 
 const addProductsTofields = async() => {
-    const getAllProducts = await axios.get(`${baseURL}products`);
+    const getAllProducts = await axios.get(`${baseURLFakeStore}products`);
     const getFakeStoreProducts = getAllProducts.data;
     console.log(getFakeStoreProducts);
-    const category = document.querySelector('#category')
+}
+const baseURLfakeStoreApi = "https://api.escuelajs.co/api/v1/";
+
+const addProductsfromapi = async() => {
+    const getAllProducts = await axios.get(`${baseURLfakeStoreApi}products`);
+    const getFakeStoreProducts = getAllProducts.data;
+    
 }

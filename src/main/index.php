@@ -56,7 +56,7 @@
                 $rating = $row['rating'];
                 $numberOfRatings = $row['numberofratings'];
                 ?>
-                    <div class="productWrapper">
+                    <div class="productWrapper" onclick="goToProductDetailWindow(<?php echo $id ?>)">
                         <div class="imagediv">
                             <img class="listimage" src=<?php echo $image ?> alt="productimage" width="130" height="150">
                         </div>
@@ -72,22 +72,22 @@
             }
             ?>
         </div>
-        <div class="filters">
+        <form class="filters">
             <div class="category-checkboxes" name="category" id="category">
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                    <input class="form-check-input" type="checkbox" name="checkbox[]" id="inlineCheckbox1" value="option1">
                     <label class="form-check-label" for="inlineCheckbox1">men's clothing</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                    <input class="form-check-input" type="checkbox" name="checkbox[]" id="inlineCheckbox2" value="option2">
                     <label class="form-check-label" for="inlineCheckbox2">women's clothing</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                    <input class="form-check-input" type="checkbox" name="checkbox[]" id="inlineCheckbox3" value="option3">
                     <label class="form-check-label" for="inlineCheckbox3">electronics</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="option4">
+                    <input class="form-check-input" type="checkbox" name="checkbox[]" id="inlineCheckbox4" value="option4">
                     <label class="form-check-label" for="inlineCheckbox4">jewelery</label>
                 </div>
             </div>
@@ -110,12 +110,26 @@
                 <option value="dalend">descending &#8595;</option>
             </select>
             <div class="buttons">
-                <button type="submit" class="btn btn-primary">Filter</button>
-                <button type="submit" class="btn btn-danger">Reset</button>
+                <button type="submit" class="btn btn-primary" onclick="filterResults()" id="filter">Filter</button>
+                <button type="button" class="btn btn-danger">Reset</button>
             </div>
-        </div>
+        </form>
     </div>
 </body>
 <script>
+    $( document ).ready(async function() {
+        addProductsTofields();
+        await addProductsfromapi();
+    });
+
+    $('#filter').on("click", function(){
+        $.ajax({
+            url: "filterResult.php",
+            method:"POST",
+            success: function (result) {
+                $(".products").html(result);
+            }
+        });
+    })
 </script>
 </html>

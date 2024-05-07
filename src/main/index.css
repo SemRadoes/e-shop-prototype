@@ -30,6 +30,7 @@ header{
 
 .image{
     width: 100px;
+    height: 60px;
 }
 .main{
     display: flex;
@@ -117,12 +118,15 @@ header{
         flex-direction: row;
         align-items: center;
         width: 100%;
-        height: fit-content;
+        height: 350px;
         gap: 5px;
     }
 
     .imagediv{
-        height: fit-content;
+        height: 350px;
+    }
+    .imagediv > img{
+        height: 350px;
     }
 
     .listimage{
