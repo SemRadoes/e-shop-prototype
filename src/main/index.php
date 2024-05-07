@@ -19,7 +19,7 @@
 <body>
     <header>
         <div class="image">
-            <a href="index.php"><img src="../../logo/logo.JPG" height="inherit" width="100px" alt=""></a>
+            <a href="index.php"><img src="../../logo/logo.JPG" height="60px" width="auto" alt=""></a>
         </div>
         <div class="input-group w-50">
             <input class="form-control border-end-0 border" type="text" value="search" id="example-search-input">

@@ -6,10 +6,10 @@ const addProductsTofields = async() => {
     const getFakeStoreProducts = getAllProducts.data;
     console.log(getFakeStoreProducts);
 }
-const baseURLfakeStoreApi = "https://api.escuelajs.co/api/v1/";
+const baseURLfakeStoreApi = "https://api.storerestapi.com/";
 
 const addProductsfromapi = async() => {
     const getAllProducts = await axios.get(`${baseURLfakeStoreApi}products`);
     const getFakeStoreProducts = getAllProducts.data;
-    
+    console.log(getFakeStoreProducts);
 }
