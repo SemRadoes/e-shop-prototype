@@ -67,7 +67,8 @@ header{
 
 .imagediv{
     text-align: center;
-    height: 150px;
+    height: 160px;
+    
 }
 
 .rating-numratings{
@@ -99,6 +100,18 @@ header{
     color: var(--watermelon);
 }
 
+.right{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.listimage{
+    height: 150px;
+}
+
+.line{
+    border: 1px solid var(--carbon)
+}
 @media screen and (max-width: 700px){
     body{
         display:flex;

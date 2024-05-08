@@ -9,6 +9,7 @@ $sortPrice = $_Get['sort-price'];
 
 if(!$rating && !$sortRating && !$checkbox && !$sortPrice){
     
+    die();
 }
 
 $query = "SELECT * FROM products WHERE ";

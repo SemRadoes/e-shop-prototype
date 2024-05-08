@@ -60,6 +60,7 @@
                         <div class="imagediv">
                             <img class="listimage" src=<?php echo $image ?> alt="productimage" width="130" height="150">
                         </div>
+                        <div class="line"></div>
                         <div class="infodiv">
                             <p style="font-weight: 800"><?php echo $name ?></p>
                             <div class="rating-numratings">
@@ -72,48 +73,51 @@
             }
             ?>
         </div>
-        <form class="filters">
-            <div class="category-checkboxes" name="category" id="category">
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" name="checkbox[]" id="inlineCheckbox1" value="option1">
-                    <label class="form-check-label" for="inlineCheckbox1">men's clothing</label>
+        <div class="right">
+            <form class="filters">
+                <div class="category-checkboxes" name="category" id="category">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input checkbox" type="checkbox" name="checkbox[]" id="inlineCheckbox1" value="option1">
+                        <label class="form-check-label" for="inlineCheckbox1">men's clothing</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input checkbox" type="checkbox" name="checkbox[]" id="inlineCheckbox2" value="option2">
+                        <label class="form-check-label" for="inlineCheckbox2">women's clothing</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input checkbox" type="checkbox" name="checkbox[]" id="inlineCheckbox3" value="option3">
+                        <label class="form-check-label" for="inlineCheckbox3">electronics</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input checkbox" type="checkbox" name="checkbox[]" id="inlineCheckbox4" value="option4">
+                        <label class="form-check-label" for="inlineCheckbox4">jewelery</label>
+                    </div>
                 </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" name="checkbox[]" id="inlineCheckbox2" value="option2">
-                    <label class="form-check-label" for="inlineCheckbox2">women's clothing</label>
+                <select class="form-select" aria-label="Default select example" name="rating" id="rating">
+                    <option value="default" selected>select rating(1-5)</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                <select class="form-select" aria-label="Default select example" name="sort-rating" id="sort-rating">
+                    <option value="default" selected>Sort Rating</option>
+                    <option value="oplopend">ascending &#8593;</option>
+                    <option value="dalend">descending &#8595;</option>
+                </select>
+                <select class="form-select" aria-label="Default select example" name="sort-price" id="sort-price">
+                    <option value="default" selected>Sort Price</option>
+                    <option value="oplopend">ascending &#8593;</option>
+                    <option value="dalend">descending &#8595;</option>
+                </select>
+                <div class="buttons">
+                    <button type="submit" class="btn btn-primary" onclick="filterResults()" id="filter">Filter</button>
+                    <button type="button" class="btn btn-danger">Reset</button>
                 </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" name="checkbox[]" id="inlineCheckbox3" value="option3">
-                    <label class="form-check-label" for="inlineCheckbox3">electronics</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" name="checkbox[]" id="inlineCheckbox4" value="option4">
-                    <label class="form-check-label" for="inlineCheckbox4">jewelery</label>
-                </div>
-            </div>
-            <select class="form-select" aria-label="Default select example" name="rating" id="rating">
-                <option value="default" selected>select rating(1-5)</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
-            <select class="form-select" aria-label="Default select example" name="sort-rating" id="sort-rating">
-                <option value="default" selected>Sort Rating</option>
-                <option value="oplopend">ascending &#8593;</option>
-                <option value="dalend">descending &#8595;</option>
-            </select>
-            <select class="form-select" aria-label="Default select example" name="sort-price" id="sort-price">
-                <option value="default" selected>Sort Price</option>
-                <option value="oplopend">ascending &#8593;</option>
-                <option value="dalend">descending &#8595;</option>
-            </select>
-            <div class="buttons">
-                <button type="submit" class="btn btn-primary" onclick="filterResults()" id="filter">Filter</button>
-                <button type="button" class="btn btn-danger">Reset</button>
-            </div>
-        </form>
+            </form>
+            <div id="no-filter-selected" class="bg-warning rounded p-2">No filters selected! please select at least one filter</div>
+        </div>
     </div>
 </body>
 <script>
@@ -123,9 +127,14 @@
     });
 
     $('#filter').on("click", function(){
+        const rating = $('#sort-rating').val();
+        const checkboxes =  $('.checkbox:checked');
+        const sortRating = $('#sort-rating').val();
+        const sortPrice = $('#sort-price').val();
         $.ajax({
             url: "filterResult.php",
             method:"POST",
+            data: $('form').serialze(),
             success: function (result) {
                 $(".products").html(result);
             }
