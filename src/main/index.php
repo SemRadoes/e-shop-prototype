@@ -77,19 +77,19 @@
             <form class="filters">
                 <div class="category-checkboxes" name="category" id="category">
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input checkbox" type="checkbox" name="checkbox[]" id="inlineCheckbox1" value="option1">
+                        <input class="form-check-input checkbox" type="checkbox" name="checkbox[]" id="inlineCheckbox1" value="1">
                         <label class="form-check-label" for="inlineCheckbox1">men's clothing</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input checkbox" type="checkbox" name="checkbox[]" id="inlineCheckbox2" value="option2">
+                        <input class="form-check-input checkbox" type="checkbox" name="checkbox[]" id="inlineCheckbox2" value="2">
                         <label class="form-check-label" for="inlineCheckbox2">women's clothing</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input checkbox" type="checkbox" name="checkbox[]" id="inlineCheckbox3" value="option3">
+                        <input class="form-check-input checkbox" type="checkbox" name="checkbox[]" id="inlineCheckbox3" value="3">
                         <label class="form-check-label" for="inlineCheckbox3">electronics</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input checkbox" type="checkbox" name="checkbox[]" id="inlineCheckbox4" value="option4">
+                        <input class="form-check-input checkbox" type="checkbox" name="checkbox[]" id="inlineCheckbox4" value="4">
                         <label class="form-check-label" for="inlineCheckbox4">jewelery</label>
                     </div>
                 </div>
@@ -122,19 +122,17 @@
 </body>
 <script>
     $( document ).ready(async function() {
-        addProductsTofields();
-        await addProductsfromapi();
+        addProductsfromapi();
     });
-
     $('#filter').on("click", function(){
         const rating = $('#sort-rating').val();
         const checkboxes =  $('.checkbox:checked');
         const sortRating = $('#sort-rating').val();
         const sortPrice = $('#sort-price').val();
         $.ajax({
-            url: "filterResult.php",
+            url: "filterResults.php",
             method:"POST",
-            data: $('form').serialze(),
+            data: $('form').serialize(),
             success: function (result) {
                 $(".products").html(result);
             }

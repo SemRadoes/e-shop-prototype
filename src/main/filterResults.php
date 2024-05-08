@@ -7,9 +7,14 @@ $rating = $_Get['rating'];
 $sortRating = $_Get['sort-rating'];
 $sortPrice = $_Get['sort-price'];
 
-if(!$rating && !$sortRating && !$checkbox && !$sortPrice){
-    
-    die();
+if($rating == "default" && $sortRating == "default" && !$checkbox && $sortPrice == "default"){?>
+    <script>
+        const noFilter = $('#no-filter-selected');
+        noFilter.fadeIn(1000);
+        setTimeout(noFilter.fadeOut(), 1000)
+    </script>
+    <?php
+    exit();
 }
 
 $query = "SELECT * FROM products WHERE ";

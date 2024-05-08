@@ -112,6 +112,12 @@ header{
 .line{
     border: 1px solid var(--carbon)
 }
+
+
+#no-filter-selected{
+    font-size: x-small;
+    display:none;
+}
 @media screen and (max-width: 700px){
     body{
         display:flex;
