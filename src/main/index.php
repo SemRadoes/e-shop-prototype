@@ -41,6 +41,81 @@
             </div>
         </div>
     </header>
+    <div class="top-products d-flex p-3">
+        <div class="popular-items">
+            <div class="popular-header">
+                <h1 class="p-3">TOP RATED</h1>
+            </div>
+            <div class="popular-products d-flex p-3 flex-wrap" style="gap: 20px;">
+            <?php
+                $query = "SELECT * FROM products ORDER BY rating DESC LIMIT 5;";
+                $result = $conn->query($query); 
+                while($row = $result->fetch_assoc()){
+                    $id = $row['id'];
+                    $name = $row['name'];
+                    $image = $row['image'];
+                    $price = $row['price'];
+                    $category = $row['category'];
+                    $description = $row['description'];
+                    $rating = $row['rating'];
+                    $numberOfRatings = $row['numberofratings'];
+                    ?>
+                    <div class="productWrapper" onclick="goToProductDetailWindow(<?php echo $id ?>)">
+                            <div class="imagediv">
+                                <img class="listimage" src=<?php echo $image ?> alt="productimage" width="130" height="150">
+                            </div>
+                            <div class="line"></div>
+                            <div class="infodiv">
+                                <p style="font-weight: 800"><?php echo $name ?></p>
+                                <div class="rating-numratings">
+                                    <p>€ <?php echo $price ?></p>
+                                    <p><?php echo $rating ?></p>
+                                </div>
+                            </div>
+                        </div>
+                        <?php
+                }
+                ?>
+            </div>
+        </div>
+        <div class="line-between border border-1 border-dark"></div>
+        <div class="most-sold-items">
+            <div class="most-sold-header">
+                <h1 class="p-3">MOST SOLD</h1>
+            </div>
+            <div class="most-sold-products d-flex p-3 flex-wrap" style="gap: 20px;">
+            <?php
+                $query = "SELECT * FROM products ORDER BY rating DESC LIMIT 5;";
+                $result = $conn->query($query); 
+                while($row = $result->fetch_assoc()){
+                    $id = $row['id'];
+                    $name = $row['name'];
+                    $image = $row['image'];
+                    $price = $row['price'];
+                    $category = $row['category'];
+                    $description = $row['description'];
+                    $rating = $row['rating'];
+                    $numberOfRatings = $row['numberofratings'];
+                    ?>
+                    <div class="productWrapper" onclick="goToProductDetailWindow(<?php echo $id ?>)">
+                            <div class="imagediv">
+                                <img class="listimage" src=<?php echo $image ?> alt="productimage" width="130" height="150">
+                            </div>
+                            <div class="line"></div>
+                            <div class="infodiv">
+                                <p style="font-weight: 800"><?php echo $name ?></p>
+                                <div class="rating-numratings">
+                                    <p>€ <?php echo $price ?></p>
+                                    <p><?php echo $rating ?></p>
+                                </div>
+                            </div>
+                        </div>
+                        <?php
+                }
+                ?>
+            </div>
+        </div>
+    </div>
     <div class="main">
         <div class="products">
             <?php
