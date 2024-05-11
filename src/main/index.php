@@ -21,15 +21,11 @@
         <div class="image">
             <a href="index.php"><img src="../../logo/logo.JPG" height="60px" width="auto" alt=""></a>
         </div>
-        <div class="input-group w-50">
-            <input class="form-control border-end-0 border" type="text" value="search" id="example-search-input">
-            <span class="input-group-append">
-                <button class="btn btn-outline-secondary bg-white border-start-0 border ms-n3" type="button">
-                <i class="fa fa-search"></i>
-                </button>
-            </span>
+        <div class="search">
+            <input class="form-control w-100" type="text" placeholder="search">
         </div>
         <div class="icons">
+            <div class="welcome mr-5">Welcome,<br> user</div>
             <div class="usericon icon">
                 <i class="fa fa-user fa-lg"></i>
             </div>
@@ -40,8 +36,11 @@
                 <i class="fa fa-shopping-cart fa-lg"></i>
             </div>
         </div>
+        <div class="login-register-button">
+            <button class="btn login-button">Log in</button>
+        </div>
     </header>
-    <div class="top-products d-flex p-3">
+    <div class="top-products d-flex p-3 justify-content-center">
         <div class="popular-items">
             <div class="popular-header">
                 <h1 class="p-3">TOP RATED</h1>
@@ -61,15 +60,17 @@
                     $numberOfRatings = $row['numberofratings'];
                     ?>
                     <div class="productWrapper" onclick="goToProductDetailWindow(<?php echo $id ?>)">
+                            <div class="heart">
+                                &#9825;
+                            </div>
                             <div class="imagediv">
                                 <img class="listimage" src=<?php echo $image ?> alt="productimage" width="130" height="150">
                             </div>
-                            <div class="line"></div>
                             <div class="infodiv">
                                 <p style="font-weight: 800"><?php echo $name ?></p>
                                 <div class="rating-numratings">
                                     <p>€ <?php echo $price ?></p>
-                                    <p><?php echo $rating ?></p>
+                                    <p class="star"><?php echo $rating ?></p>
                                 </div>
                             </div>
                         </div>
@@ -85,7 +86,7 @@
             </div>
             <div class="most-sold-products d-flex p-3 flex-wrap" style="gap: 20px;">
             <?php
-                $query = "SELECT * FROM products ORDER BY rating DESC LIMIT 5;";
+                $query = "SELECT * FROM products ORDER BY items_sold DESC LIMIT 5;";
                 $result = $conn->query($query); 
                 while($row = $result->fetch_assoc()){
                     $id = $row['id'];
@@ -101,12 +102,11 @@
                             <div class="imagediv">
                                 <img class="listimage" src=<?php echo $image ?> alt="productimage" width="130" height="150">
                             </div>
-                            <div class="line"></div>
                             <div class="infodiv">
-                                <p style="font-weight: 800"><?php echo $name ?></p>
+                                <p style="font-weight: 800; text-align: center;"><?php echo $name ?></p>
                                 <div class="rating-numratings">
                                     <p>€ <?php echo $price ?></p>
-                                    <p><?php echo $rating ?></p>
+                                    <p class="star"><?php echo $rating ?></p>
                                 </div>
                             </div>
                         </div>
@@ -117,38 +117,31 @@
         </div>
     </div>
     <div class="main">
-        <div class="products">
-            <?php
-            $query = "SELECT * FROM products";
-            $result = $conn->query($query); 
-            while($row = $result->fetch_assoc()){
-                $id = $row['id'];
-                $name = $row['name'];
-                $image = $row['image'];
-                $price = $row['price'];
-                $category = $row['category'];
-                $description = $row['description'];
-                $rating = $row['rating'];
-                $numberOfRatings = $row['numberofratings'];
-                ?>
-                    <div class="productWrapper" onclick="goToProductDetailWindow(<?php echo $id ?>)">
-                        <div class="imagediv">
-                            <img class="listimage" src=<?php echo $image ?> alt="productimage" width="130" height="150">
-                        </div>
-                        <div class="line"></div>
-                        <div class="infodiv">
-                            <p style="font-weight: 800"><?php echo $name ?></p>
-                            <div class="rating-numratings">
-                                <p>€ <?php echo $price ?></p>
-                                <p><?php echo $rating ?></p>
-                            </div>
-                        </div>
-                    </div>
-                    <?php
-            }
-            ?>
+        <div class="shop-by-category p-3">
+            <h1>Shop by category</h1>
         </div>
-        <div class="right">
+        <div class="categories d-flex flex-wrap gap-2">
+                <?php
+                $query = "SELECT * FROM categories";
+                $result = $conn->query($query); 
+                while($row = $result->fetch_assoc()){
+                    $id = $row['id'];
+                    $category = $row['category'];
+                    $categoryImage = $row['category_image'];
+                    ?>
+            <div role="button" class="category p-3 d-flex flex-column">
+                <div class="category-image">
+                    <img src=<?php echo $categoryImage?> alt="" height="400px" width="400px">
+                </div>
+                <div class="category-name mt-2 ml-1">
+                    <h3><?php echo $category?></h3>
+                </div>
+            </div>
+                <?php
+                }
+                ?>
+        </div>
+        <!-- <div class="right">
             <form class="filters">
                 <div class="category-checkboxes" name="category" id="category">
                     <div class="form-check form-check-inline">
@@ -192,7 +185,7 @@
                 </div>
             </form>
             <div id="no-filter-selected" class="bg-warning rounded p-2">No filters selected! please select at least one filter</div>
-        </div>
+        </div> -->
     </div>
 </body>
 <script>
