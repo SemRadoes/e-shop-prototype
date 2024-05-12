@@ -12,34 +12,17 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.8/axios.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<link rel="stylesheet" stylesheet="text/css" href="common.css">
     <link href="index.css" rel="stylesheet" stylesheet="text/css">
+    <link href="header.css" rel="stylesheet" stylesheet="text/css">
+    <link href="fonts.css" rel="stylesheet" stylesheet="text/css">
+    <?php include './fonts.php';?>
     <script defer src="writeDB.js" type="text/javascript"></script>
     <title>Aws3mwebshop</title>
 </head>
-<body>
-    <header>
-        <div class="image">
-            <a href="index.php"><img src="../../logo/logo.JPG" height="60px" width="auto" alt=""></a>
-        </div>
-        <div class="search">
-            <input class="form-control w-100" type="text" placeholder="search">
-        </div>
-        <div class="icons">
-            <div class="welcome mr-5">Welcome,<br> user</div>
-            <div class="usericon icon">
-                <i class="fa fa-user fa-lg"></i>
-            </div>
-            <div class="cartheart icon">
-                <i class="fa fa-heart fa-lg"></i>
-            </div>
-            <div class="carticon icon">
-                <i class="fa fa-shopping-cart fa-lg"></i>
-            </div>
-        </div>
-        <div class="login-register-button">
-            <button class="btn login-button">Log in</button>
-        </div>
-    </header>
+<body class="poppins-black">
+    <?php include './header.php'?>
     <div class="top-products d-flex p-3 justify-content-center">
         <div class="popular-items">
             <div class="popular-header">
@@ -67,8 +50,8 @@
                                 <img class="listimage" src=<?php echo $image ?> alt="productimage" width="130" height="150">
                             </div>
                             <div class="infodiv">
-                                <p style="font-weight: 800"><?php echo $name ?></p>
-                                <div class="rating-numratings">
+                                <p class="poppins-bold"><?php echo $name ?></p>
+                                <div class="rating-numratings poppins-light">
                                     <p>€ <?php echo $price ?></p>
                                     <p class="star"><?php echo $rating ?></p>
                                 </div>
@@ -104,7 +87,7 @@
                             </div>
                             <div class="infodiv">
                                 <p style="font-weight: 800; text-align: center;"><?php echo $name ?></p>
-                                <div class="rating-numratings">
+                                <div class="rating-numratings poppins-light">
                                     <p>€ <?php echo $price ?></p>
                                     <p class="star"><?php echo $rating ?></p>
                                 </div>
@@ -205,6 +188,12 @@
                 $(".products").html(result);
             }
         });
-    })
+    });
+    function goToLoginPage(){
+        window.location = "../login/loginPage.php"
+    }
+    function goToLogoutPage(){
+        window.location = "../login/logout.php"
+    }
 </script>
 </html>

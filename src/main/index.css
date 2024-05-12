@@ -1,8 +1,8 @@
 :root {
-    --marine: #57BC90;
-    --neutral: #A5A5AF;
-    --forest: #015249;
-    --feather: #77C9D4;
+    --dark-blue: #0E46A3;
+    --light-blue: #9AC8CD;
+    --dark-purple: #1E0342;
+    --accent-color: #E1F7F5;
   }
 
 body{
@@ -11,42 +11,7 @@ body{
     display: flex;
     flex-direction: column;
     gap: 10px;
-    background-color: var(--neutral);
-    
-}
-
-header{
-    position: sticky;
-    top: 0;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    height: 100px;
-    background-color: var(--marine);
-    box-shadow: 0px 7px 20px 3px var(--neutral);
--webkit-box-shadow: 0px 7px 20px 3px var(--neutral);
--moz-box-shadow: 0px 7px 20px 3px var(--neutral);
-}
-
-.image{
-    width: 100px;
-    height: 60px;
-}
-.search{
-    width: 40%;
-}
-
-.login-button{
-    padding: 10px;
-    border: 2px solid var(--forest);
-    background-color: var(--forest);
-    border-radius: 5px;
-    color: white;
-}
-
-.login-button:hover{
-    background-color: var(--marine);
-    border: 2px solid var(--forest);
+    background-color: var(--accent-color);
 }
 
 .main{
@@ -67,7 +32,7 @@ header{
     font-size: 10px;
     text-align: center;
     /* From https://css.glass */
-background: rgba(255, 255, 255, 0.2);
+background: rgba(255, 255, 255, 0.5);
 border-radius: 16px;
 box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 backdrop-filter: blur(5px);
@@ -101,6 +66,10 @@ border: 1px solid rgba(255, 255, 255, 0.3);
 .star::before{
     content: "★";
     font-size: large;
+    color: goldenrod;
+}
+.star{
+    color: goldenrod;
 }
 .filters{
     margin-top: 20px;
@@ -125,7 +94,7 @@ border: 1px solid rgba(255, 255, 255, 0.3);
 
 .icon:hover{
     cursor: pointer;
-    color: var(--forest);
+    color: var(--light-blue);
 }
 
 .right{
@@ -143,10 +112,6 @@ h1, h2, h3{
     color: var(--forest)    
 }
 
-#no-filter-selected{
-    font-size: x-small;
-    display:none;
-}
 @media screen and (max-width: 700px){
     body{
         display:flex;
@@ -157,7 +122,7 @@ h1, h2, h3{
         flex-direction: column-reverse;
         gap: 5px;
     }
-    .products{
+    .top-products{
         display: flex;
         flex-direction: column;
         width: 100%;
