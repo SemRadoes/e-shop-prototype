@@ -1,8 +1,8 @@
 
 <header>
-    <div class="top-header d-flex justify-content-around align-items-center w-100">
+    <div class="top-header flex justify-around items-center w-full">
         <div class="image">
-            <a href="index.php"><img src="../../logo/logo.JPG" height="80px" width="auto" alt="logo"></a>
+            <a href="index.php"><img src="../../logo/logo.JPG" style="height: 80px;" alt="logo"></a>
         </div>
         <div class="search">
             <input class="form-control w-100" type="text" placeholder="search">
@@ -19,12 +19,12 @@
                 <i class="fa fa-shopping-cart fa-lg"></i>
             </div>
         </div>
-        <div class="d-flex login-register-button">
+        <div class="flex login-register-button">
             <button class="btn login-button" onclick="goToLoginPage()"><span class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;Log in</button>
             <button class="btn logout-button" onclick="goToLogoutPage()"><span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;Log out</button>
         </div>
     </div>
-    <div class="bot-header d-flex p-2 w-100 justify-content-center">
+    <div class="bot-header flex p-2 w-full justify-center items-center">
         <div class="nav-item">
             <h3>HOME</h3>
         </div>

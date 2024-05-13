@@ -5,41 +5,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.8/axios.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<?php include '../fonts/fonts.php';?>
+    <?php include '../modules/head.php';?>
+    <?php include '../fonts/fonts.php';?>
     <link href="login.css" rel="stylesheet" stylesheet="text/css">
     <link href="../fonts/fonts.css" rel="stylesheet" stylesheet="text/css">
     <title>Log into Awsem webshop</title>
 </head>
-<body class="d-flex justify-content-center align-items-center vh-100 loginpage poppins-regular text-white p-5">
-    <div class="d-flex flex-column justify-content-center login">
+<body class="flex justify-center items-center h-screen loginpage poppins-regular text-white p-5">
+    <div class="flex flex-col justify-center login gap-3">
         <h1>LOGIN</h1>
-        <form action="login.php" class="d-flex flex-column loginform w-100">
-            <input type="email" placeholder="email" class="form-control-lg">
-            <input type="password" placeholder="password" class="form-control-lg">
-            <input type="password" placeholder="confirm password" class="form-control-lg">
-            <button class="btn btn-dark">Log in</button>
+        <form action="login.php" class="flex flex-col loginform w-full">
+            <input type="email" placeholder="email" class="p-2 rounded">
+            <input type="password" placeholder="password" class="p-2 rounded">
+            <input type="password" placeholder="confirm password" class="p-2 rounded">
+            <button class="p-2 rounded button">Log in</button>
+            <h3 class="poppins-italic hover:cursor-pointer hover:text-red-500 gotoregister">No account? register here</h3>
         </form>
     </div>
-    <h1>- OR -</h1>
-    <div class="d-flex flex-column justify-content-center register">
+    <div class="flex flex-col justify-center register gap-3 hidden">
         <h1>Register</h1>
-        <form action="register.php" class="d-flex flex-column registerform w-100">
-            <input type="text" placeholder="first name" class="form-control-lg">
-            <input type="text" placeholder="last name" class="form-control-lg">
-            <input type="email" placeholder="email" class="form-control-lg">
-            <input type="text" placeholder="street" class="form-control-lg">
-            <input type="text" placeholder="housenumber" class="form-control-lg">
-            <input type="text" placeholder="postal code" class="form-control-lg">
-            <input type="text" placeholder="city" class="form-control-lg">
-            <input type="password" placeholder="password" class="form-control-lg">
-            <input type="password" placeholder="confirm password" class="form-control-lg">
-            <button class="btn btn-dark">Register</button>
+        <form action="register.php" class="flex flex-col registerform w-full">
+            <input type="text" placeholder="first name" class="p-2 rounded">
+            <input type="text" placeholder="last name" class="p-2 rounded">
+            <input type="email" placeholder="email" class="p-2 rounded">
+            <input type="text" placeholder="street" class="p-2 rounded">
+            <input type="text" placeholder="housenumber" class="p-2 rounded">
+            <input type="text" placeholder="postal code" class="p-2 rounded">
+            <input type="text" placeholder="city" class="p-2 rounded">
+            <input type="password" placeholder="password" class="p-2 rounded">
+            <input type="password" placeholder="confirm password" class="p-2 rounded">
+            <button class="p-2 rounded button">Register</button>
+            <h3 class="poppins-italic hover:cursor-pointer hover:text-red-500 gotologin">Aready have an account? log in here</h3>
         </form>
     </div>
 </body>
+<script>
+    $('.gotoregister').on('click', function(){
+        $('.login').fadeOut(500);
+        setTimeout(() => {
+            $('.register').fadeIn(500);
+        }, 500);
+    });
+    $('.gotologin').on('click', function(){
+        $('.register').fadeOut(500);
+        setTimeout(() => {
+            $('.login').fadeIn(500);
+        }, 500);
+    });
+</script>
 </html>

@@ -7,28 +7,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.8/axios.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <?php include '../modules/head.php';?>
 <link rel="stylesheet" stylesheet="text/css" href="common.css">
     <link href="index.css" rel="stylesheet" stylesheet="text/css">
     <link href="header.css" rel="stylesheet" stylesheet="text/css">
     <link href="fonts.css" rel="stylesheet" stylesheet="text/css">
-    <?php include './fonts.php';?>
+    <?php include '../fonts/fonts.php';?>
     <script defer src="writeDB.js" type="text/javascript"></script>
     <title>Aws3mwebshop</title>
 </head>
 <body class="poppins-black">
     <?php include './header.php'?>
-    <div class="top-products d-flex p-3 justify-content-center">
+    <div class="top-products flex p-3 justify-content-center">
         <div class="popular-items">
             <div class="popular-header">
                 <h1 class="p-3">TOP RATED</h1>
             </div>
-            <div class="popular-products d-flex p-3 flex-wrap" style="gap: 20px;">
+            <div class="popular-products flex p-3 flex-wrap" style="gap: 20px;">
             <?php
                 $query = "SELECT * FROM products ORDER BY rating DESC LIMIT 5;";
                 $result = $conn->query($query); 
@@ -67,7 +62,7 @@
             <div class="most-sold-header">
                 <h1 class="p-3">MOST SOLD</h1>
             </div>
-            <div class="most-sold-products d-flex p-3 flex-wrap" style="gap: 20px;">
+            <div class="most-sold-products flex p-3 flex-wrap" style="gap: 20px;">
             <?php
                 $query = "SELECT * FROM products ORDER BY items_sold DESC LIMIT 5;";
                 $result = $conn->query($query); 
@@ -103,7 +98,7 @@
         <div class="shop-by-category p-3">
             <h1>Shop by category</h1>
         </div>
-        <div class="categories d-flex flex-wrap gap-2">
+        <div class="categories flex flex-wrap gap-2">
                 <?php
                 $query = "SELECT * FROM categories";
                 $result = $conn->query($query); 
