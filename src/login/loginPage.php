@@ -18,7 +18,7 @@
             <input type="email" placeholder="email" class="p-2 rounded">
             <input type="password" placeholder="password" class="p-2 rounded">
             <input type="password" placeholder="confirm password" class="p-2 rounded">
-            <button class="p-2 rounded button">Log in</button>
+            <button class="p-2 rounded button hover:border-white">Log in</button>
             <h3 class="poppins-italic hover:cursor-pointer hover:text-red-500 gotoregister">No account? register here</h3>
         </form>
     </div>
@@ -34,7 +34,7 @@
             <input type="text" placeholder="city" class="p-2 rounded">
             <input type="password" placeholder="password" class="p-2 rounded">
             <input type="password" placeholder="confirm password" class="p-2 rounded">
-            <button class="p-2 rounded button">Register</button>
+            <button class="p-2 rounded button hover:border-white hover:border-2">Register</button>
             <h3 class="poppins-italic hover:cursor-pointer hover:text-red-500 gotologin">Aready have an account? log in here</h3>
         </form>
     </div>
