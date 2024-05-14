@@ -7,24 +7,33 @@
 
 .loginpage{
     gap: 50px;
-    background-color: var(--dark-purple)
+    background-image: url('../../logo/logo.JPG');
+    background-size: cover;
+    background-repeat: repeat;
 }
 .login, .register{
-    width: 30%;
     height: fit-content;
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 20px );
+-webkit-backdrop-filter: blur( 0px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 .loginform, .registerform{
     gap: 50px;
     padding: 2rem;
     height: 100%;
     background: rgba( 255, 255, 255, 0.25 );
-box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-backdrop-filter: blur( 0px );
--webkit-backdrop-filter: blur( 0px );
-border-radius: 10px;
-border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 
 .button{
     background-color: var(--dark-purple);
+}
+
+.button:hover{
+    background-color: var(--dark-blue);
+}
+
+input{
+    background-color: linear-gradient(rgb(151, 80, 80), rgba(255,255,225))
 }

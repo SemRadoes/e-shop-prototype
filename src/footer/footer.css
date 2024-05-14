@@ -1,0 +1,10 @@
+:root {
+    --dark-blue: #0E46A3;
+    --light-blue: #9AC8CD;
+    --dark-purple: #1E0342;
+    --accent-color: #E1F7F5;
+  }
+
+footer{
+    background-color: var(--dark-purple);
+}

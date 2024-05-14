@@ -50,18 +50,8 @@ z-index: 2;
     gap: 20px;
     width: fit-content;
 }
-.login-button{
-    padding: 10px;
-    border: 2px solid var(--dark-blue);
-    background-color: var(--dark-blue);
-    border-radius: 5px;
-    color: white;
-}
 
-.logout-button{
-    padding: 10px;
+.logout-button, .login-button{
     border: 2px solid var(--dark-blue);
     background-color: var(--dark-blue);
-    border-radius: 5px;
-    color: white;
 }

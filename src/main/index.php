@@ -10,18 +10,19 @@
     <?php include '../modules/head.php';?>
 <link rel="stylesheet" stylesheet="text/css" href="common.css">
     <link href="index.css" rel="stylesheet" stylesheet="text/css">
-    <link href="header.css" rel="stylesheet" stylesheet="text/css">
-    <link href="fonts.css" rel="stylesheet" stylesheet="text/css">
+    <link href="../header/header.css" rel="stylesheet" stylesheet="text/css">
+    <link href="../footer/footer.css" rel="stylesheet" stylesheet="text/css">
+    <link href="../fonts/fonts.css" rel="stylesheet" stylesheet="text/css">
     <?php include '../fonts/fonts.php';?>
     <script defer src="writeDB.js" type="text/javascript"></script>
     <title>Aws3mwebshop</title>
 </head>
-<body class="poppins-black">
-    <?php include './header.php'?>
+<body class="poppins-normal">
+    <?php include '../header/header.php'?>
     <div class="top-products flex p-3 justify-content-center">
         <div class="popular-items">
-            <div class="popular-header">
-                <h1 class="p-3">TOP RATED</h1>
+            <div class="popular-header p-3 border border-solid border-2 w-fit rounded-xl ml-3">
+                <h1>TOP RATED</h1>
             </div>
             <div class="popular-products flex p-3 flex-wrap" style="gap: 20px;">
             <?php
@@ -59,8 +60,8 @@
         </div>
         <div class="line-between border border-1 border-dark"></div>
         <div class="most-sold-items">
-            <div class="most-sold-header">
-                <h1 class="p-3">MOST SOLD</h1>
+            <div class="most-sold-header p-3 border border-solid border-2 w-fit rounded-xl ml-3">
+                <h1>MOST SOLD</h1>
             </div>
             <div class="most-sold-products flex p-3 flex-wrap" style="gap: 20px;">
             <?php
@@ -81,7 +82,7 @@
                                 <img class="listimage" src=<?php echo $image ?> alt="productimage" width="130" height="150">
                             </div>
                             <div class="infodiv">
-                                <p style="font-weight: 800; text-align: center;"><?php echo $name ?></p>
+                                <p class="poppins-bold"><?php echo $name ?></p>
                                 <div class="rating-numratings poppins-light">
                                     <p>€ <?php echo $price ?></p>
                                     <p class="star"><?php echo $rating ?></p>
@@ -94,11 +95,11 @@
             </div>
         </div>
     </div>
-    <div class="main">
-        <div class="shop-by-category p-3">
+    <div class="main border border-2 border-current border-solid m-2">
+        <div class="shop-by-category p-3 border border-solid border-2 w-fit rounded-xl ml-3">
             <h1>Shop by category</h1>
         </div>
-        <div class="categories flex flex-wrap gap-2">
+        <div class="categories flex overflow-auto gap-2">
                 <?php
                 $query = "SELECT * FROM categories";
                 $result = $conn->query($query); 
@@ -107,11 +108,11 @@
                     $category = $row['category'];
                     $categoryImage = $row['category_image'];
                     ?>
-            <div role="button" class="category p-3 d-flex flex-column">
+            <div role="button" class="category p-3 flex flex-col">
                 <div class="category-image">
-                    <img src=<?php echo $categoryImage?> alt="" height="400px" width="400px">
+                    <img src=<?php echo $categoryImage?> alt="" class="h-80 w-80">
                 </div>
-                <div class="category-name mt-2 ml-1">
+                <div class="category-name mt-2 ml-2">
                     <h3><?php echo $category?></h3>
                 </div>
             </div>
@@ -166,6 +167,7 @@
         </div> -->
     </div>
 </body>
+<?php include '../footer/footer.php';?>
 <script>
     $( document ).ready(async function() {
         addProductsfromapi();
