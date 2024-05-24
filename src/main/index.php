@@ -1,20 +1,17 @@
 
-<?php session_start();
-?>
-<!DOCTYPE html>
 <?php include '../modules/dbconnection.php';?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php include '../modules/head.php';?>
-<link rel="stylesheet" stylesheet="text/css" href="common.css">
+    <link rel="stylesheet" stylesheet="text/css" href="common.css">
     <link href="index.css" rel="stylesheet" stylesheet="text/css">
     <link href="../header/header.css" rel="stylesheet" stylesheet="text/css">
     <link href="../footer/footer.css" rel="stylesheet" stylesheet="text/css">
     <link href="../fonts/fonts.css" rel="stylesheet" stylesheet="text/css">
     <?php include '../fonts/fonts.php';?>
-    <script defer src="writeDB.js" type="text/javascript"></script>
     <title>Aws3mwebshop</title>
 </head>
 <body class="poppins-normal">
@@ -169,9 +166,6 @@
 </body>
 <?php include '../footer/footer.php';?>
 <script>
-    $( document ).ready(async function() {
-        addProductsfromapi();
-    });
     $('#filter').on("click", function(){
         const rating = $('#sort-rating').val();
         const checkboxes =  $('.checkbox:checked');
@@ -191,6 +185,10 @@
     }
     function goToLogoutPage(){
         window.location = "../login/logout.php"
+    }
+
+    function goToProductDetailWindow(id){
+        window.location.href = './product.php?id=' + id;
     }
 </script>
 </html>

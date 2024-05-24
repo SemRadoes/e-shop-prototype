@@ -1,4 +1,5 @@
 
+<?php session_start(); ?>
 <header>
     <div class="top-header flex justify-around items-center w-full">
         <div class="image">
@@ -8,7 +9,7 @@
             <input class="w-full p-2 rounded" type="text" placeholder="search">
         </div>
         <div class="icons">
-            <div class="welcome mr-5">Welcome,<br> user</div>
+            <?php if(isset($_SESSION['$user_ID'])){?><div class="welcome mr-5">Welcome,<br><?php echo $_SESSION['$user_lastname']. " " . $_SESSION['$user_firstname']?></div><?php }?>
             <div class="usericon icon">
                 <i class="fa fa-user fa-lg"></i>
             </div>

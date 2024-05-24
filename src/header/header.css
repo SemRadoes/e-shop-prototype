@@ -35,7 +35,6 @@ z-index: 2;
 }
 
 .nav-item:hover{
-    transform: translateY(-5px);
     cursor: pointer;
 }
 
@@ -54,4 +53,17 @@ z-index: 2;
 .logout-button, .login-button{
     border: 2px solid var(--dark-blue);
     background-color: var(--dark-blue);
+}
+
+.icons{
+    display:flex;
+    align-items: center;
+    width: fit-content;
+    gap: 20px;
+    color: white;
+}
+
+.icon:hover{
+    cursor: pointer;
+    color: var(--light-blue);
 }
