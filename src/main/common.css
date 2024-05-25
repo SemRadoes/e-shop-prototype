@@ -1,3 +1,12 @@
+:root {
+    --beige: #EAE7DC;
+    --brown: #D8C3A5;
+    --grey: #8E8D8A;
+    --pinkish: #E88073;
+    --reddish: #E85A50;
+}
+
+
 a{
     text-decoration: none;
 }

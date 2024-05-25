@@ -10,16 +10,20 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $result = $conn->query("SELECT * FROM users WHERE email = '$email'"); 
     $userInfo = $result->fetch_assoc();
     if($userInfo > 0){
+        $userFirstName = $userInfo['firstname'];
+        $userLastName = $userInfo['lastname'];
+        $useremail = $userInfo['email'];
+        $dbPassword = $userInfo['password'];
         if(password_verify($verifyPassword, $dbPassword)){
-            echo "<script>$('#loggedin').removeClass('hidden');$('#errorpassword').addClass('hidden');$('#erroremail').addClass('hidden');</script>";
+            echo "<script>$('#loggedin').removeClass('hidden');$('#errorpassword').addClass('hidden');$('#erroremail').addClass('hidden');$('#passwordverifyerror').addClass('hidden');$('#nopasswordoremailgiven').addClass('hidden');</script>";
             session_regenerate_id();
             echo $_SESSION['user_ID'] = $userID;
             echo $_SESSION['user_firstname'] = $userFirstName;
             echo $_SESSION['user_lastname'] = $userLastName;
         } else {
-            echo "<script>$('#loggedin').addClass('hidden');$('#errorpassword').removeClass('hidden');$('#erroremail').addClass('hidden');</script>";
+            echo "<script>$('#loggedin').addClass('hidden');$('#errorpassword').removeClass('hidden');$('#erroremail').addClass('hidden');$('#passwordverifyerror').addClass('hidden');$('#nopasswordoremailgiven').addClass('hidden');</script>";
         }
     } else {
-        echo "<script>$('#loggedin').addClass('hidden');$('#errorpassword').addClass('hidden');$('#erroremail').removeClass('hidden');</script>";
+        echo "<script>$('#loggedin').addClass('hidden');$('#errorpassword').addClass('hidden');$('#erroremail').removeClass('hidden');$('#passwordverifyerror').addClass('hidden');$('#nopasswordoremailgiven').addClass('hidden');</script>";
     }
 }

@@ -94,9 +94,15 @@
         if($('#loginemail').val() === "" || $('#loginpassword').val() === "" && $('#verifyloginpassword').val() === ""){
             $('#nopasswordoremailgiven').css('display', 'flex');
             $('#passwordverifyerror').hide();
+            $('#erroremail').hide();
+            $('#errorpassword').hide();
+            $('#loggedin').hide();
         } else if($('#loginpassword').val() !== $('#verifyloginpassword').val()){
             $('#nopasswordoremailgiven').hide();
             $('#passwordverifyerror').css('display', 'flex');
+            $('#erroremail').hide();
+            $('#errorpassword').hide();
+            $('#loggedin').hide();
         } else {
             $.ajax({
                 type: 'post',

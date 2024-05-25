@@ -1,14 +1,7 @@
-:root {
-    --dark-blue: #0E46A3;
-    --light-blue: #9AC8CD;
-    --dark-purple: #1E0342;
-    --accent-color: #E1F7F5;
-}
-
 body{
     margin: 0;
 }
 
 #product-head{
-    background-color: var(--dark-blue);
+    background-color: var(--grey);
 }
