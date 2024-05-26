@@ -2,6 +2,7 @@
 $productID = $_GET['id'];
 
 include '../modules/dbconnection.php';
+include '../modules/sessionVariables.php';
 $query = "SELECT * FROM products WHERE id = '$productID'";
 $result = $conn->query($query); 
 $productInfo = $result->fetch_assoc();
@@ -30,12 +31,12 @@ $numberofratings = $productInfo['numberofratings'];
 </head>
 <body class="poppins-regular">
     <?php include '../header/header.php'?>
-    <div id="product-head" class="flex justify-center content-center gap-20 h-fit">
-        <img src=<?php echo $image;?> alt="productimage" width="300px" haight="auto">
-        <div id="product-info" class="flex flex-col gap-1 content-center justify-center w-96 p-5">
+    <div id="product-head" class="flex justify-center content-center gap-20 h-fit p-5">
+        <img src=<?php echo $image;?> alt="productimage" width="600px" haight="auto">
+        <div id="product-info" class="flex flex-col gap-5 justify-center w-96 p-5">
             <div class="flex content-center">
                 <?php if($rating < 2){?>
-                    <span >&#9733;&#9734;&#9734;&#9734;&#9734;</span>
+                    <span>&#9733;&#9734;&#9734;&#9734;&#9734;</span>
                 <?php } else if($rating >= 2 and $rating < 3){?>
                     <span>&#9733;&#9733;&#9734;&#9734;&#9734;</span>
                 <?php } else if($rating >= 3 and $rating < 4){?>
@@ -47,7 +48,7 @@ $numberofratings = $productInfo['numberofratings'];
                 <?php } ?>
                 <span>(<?php echo $numberofratings;?>)</span>
             </div>
-            <div><?php echo $name;?></div>
+            <div class="poppins-bold"><?php echo $name;?></div>
             <div><?php echo $description;?></div>
             <div>€ <?php echo $price;?></div>
         </div>

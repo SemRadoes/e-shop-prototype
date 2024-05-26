@@ -90,13 +90,15 @@ border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 h1, h2, h3{
-    color: var(--forest)    
+    color: var(--beige);
 }
 .shop-by-category, .popular-header, .most-sold-header{
-    border-color: var(--dark-blue);
-    background-color: var(--light-blue);
+    border-color: var(--reddish);
+    background-color: var(--pinkish);
 }
-
+.category-name{
+    color: var(--beige);
+}
 @media screen and (max-width: 700px){
     body{
         display:flex;

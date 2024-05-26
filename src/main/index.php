@@ -1,5 +1,6 @@
 
-<?php include '../modules/dbconnection.php';?>
+<?php include '../modules/dbconnection.php';
+include '../modules/sessionVariables.php';?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -75,6 +76,9 @@
                     $numberOfRatings = $row['numberofratings'];
                     ?>
                     <div class="productWrapper" onclick="goToProductDetailWindow(<?php echo $id ?>)">
+                    <div class="heart">
+                                &#9825;
+                            </div>
                             <div class="imagediv">
                                 <img class="listimage" src=<?php echo $image ?> alt="productimage" width="130" height="150">
                             </div>
@@ -180,15 +184,14 @@
             }
         });
     });
-    function goToLoginPage(){
-        window.location = "../login/loginPage.php"
-    }
-    function goToLogoutPage(){
-        window.location = "../login/logout.php"
-    }
 
     function goToProductDetailWindow(id){
         window.location.href = './product.php?id=' + id;
     }
+
+    $( document ).ready(() => {
+        $('#home-nav').addClass('home-nav');
+    }
+    );
 </script>
 </html>

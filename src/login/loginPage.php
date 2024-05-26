@@ -1,4 +1,5 @@
 <?php include '../modules/dbconnection.php';
+include '../modules/sessionVariables.php';
 ?>
 
 <!DOCTYPE html>
@@ -8,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php include '../modules/head.php';?>
     <?php include '../fonts/fonts.php';?>
+    <link href="../main/common.css" rel="stylesheet" stylesheet="text/css">
     <link href="login.css" rel="stylesheet" stylesheet="text/css">
     <link href="../fonts/fonts.css" rel="stylesheet" stylesheet="text/css">
     <title>Login/register</title>
