@@ -22,6 +22,7 @@ $numberofratings = $productInfo['numberofratings'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php include '../modules/head.php';?>
     <link rel="stylesheet" stylesheet="text/css" href="common.css">
+    <link href="../main/common.css" rel="stylesheet" stylesheet="text/css">
     <link href="../header/header.css" rel="stylesheet" stylesheet="text/css">
     <link href="../footer/footer.css" rel="stylesheet" stylesheet="text/css">
     <link href="../fonts/fonts.css" rel="stylesheet" stylesheet="text/css">
@@ -51,6 +52,10 @@ $numberofratings = $productInfo['numberofratings'];
             <div class="poppins-bold"><?php echo $name;?></div>
             <div><?php echo $description;?></div>
             <div>€ <?php echo $price;?></div>
+            <div class="flex justify-between gap-2">
+                <i class="fa fa-heart w-full p-3 rounded wishlistButton hover:cursor-pointer">&nbsp;<span class="poppns-regular">Add to wishlist</span></i>
+                <i class="fa fa-shopping-cart w-full p-3 rounded cartButton hover:cursor-pointer">&nbsp;<span class="poppns-regular">Add to cart</span></i>
+            </div>
         </div>
     </div>
     <?php include '../footer/footer.php'?>

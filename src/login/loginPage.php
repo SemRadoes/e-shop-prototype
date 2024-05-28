@@ -1,5 +1,5 @@
 <?php include '../modules/dbconnection.php';
-include '../modules/sessionVariables.php';
+// include '../modules/sessionVariables.php';
 ?>
 
 <!DOCTYPE html>
@@ -22,13 +22,17 @@ include '../modules/sessionVariables.php';
             <input type="email" name="email" id="loginemail" placeholder="email" class="p-2 rounded">
             <input placeholder="password" id="loginpassword" name="password" class="p-2 rounded">
             <input name="confirm-password" id="verifyloginpassword" placeholder="confirm password" class="p-2 rounded">
-            <div class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-2 flex gap-3 items-center hidden" id="passwordverifyerror" role="alert">
-                <img src="../../icons/icons8-box-important-50.png" alt="warning-icon">
-                <p>passwords don't match</p>
+            <div id="passwordverifyerror" class="hidden">
+                <div class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-2 flex gap-3 items-center" role="alert">
+                    <img src="../../icons/icons8-box-important-50.png" alt="warning-icon">
+                    <p>passwords don't match</p>
+                </div>
             </div>
-            <div class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-2 flex gap-3 items-center hidden" id="nopasswordoremailgiven" role="alert">
-                <img src="../../icons/icons8-box-important-50.png" alt="warning-icon">
-                <p>Please enter email and password</p>
+            <div id="nopasswordoremailgiven" class="hidden">
+                <div class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-2 flex gap-3 items-center" role="alert">
+                    <img src="../../icons/icons8-box-important-50.png" alt="warning-icon">
+                    <p>Please enter email and password</p>
+                </div>
             </div>
             <div id="erroremail" class="hidden">
                 <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-2 flex gap-3 items-center" id="wrongemail" role="alert">
@@ -48,6 +52,7 @@ include '../modules/sessionVariables.php';
                     <p>Succesfully logged in</p>
                 </div>
             </div>
+            <div id="ajax" class="hidden"></div>
             <button type="submit" id="login" class="p-2 rounded button text-white">Log in</button>
             <h3 class="poppins-italic hover:cursor-pointer hover:text-red-500 gotoregister w-fit">No account? register here</h3>
         </form>
@@ -71,13 +76,11 @@ include '../modules/sessionVariables.php';
             <input type="email" placeholder="email" class="p-2 rounded">
             <input type="password" placeholder="password" class="p-2 rounded">
             <input type="password" placeholder="confirm password" class="p-2 rounded">
-            <p id="passwordverifyerror" class="hidden"></p>
             <button  type="submit" id="register" class="p-2 rounded button text-white">Register</button>
             <h3 class="poppins-italic hover:cursor-pointer hover:text-red-500 gotologin w-fit">Aready have an account? log in here</h3>
         </form>
     </div>
 </body>
-<script id="ajax"></script>
 <script>
     $('.gotoregister').on('click', function(){
         $('.login').fadeOut(500);
@@ -93,31 +96,17 @@ include '../modules/sessionVariables.php';
     });
     $('#loginform').on('submit', function (e) {
         e.preventDefault();
-        if($('#loginemail').val() === "" || $('#loginpassword').val() === "" && $('#verifyloginpassword').val() === ""){
-            $('#nopasswordoremailgiven').css('display', 'flex');
-            $('#passwordverifyerror').hide();
-            $('#erroremail').hide();
-            $('#errorpassword').hide();
-            $('#loggedin').hide();
-        } else if($('#loginpassword').val() !== $('#verifyloginpassword').val()){
-            $('#nopasswordoremailgiven').hide();
-            $('#passwordverifyerror').css('display', 'flex');
-            $('#erroremail').hide();
-            $('#errorpassword').hide();
-            $('#loggedin').hide();
-        } else {
             $.ajax({
                 type: 'post',
                 url: 'login.php',
                 data: $('#loginform').serialize(),
                 success: function (result) {
                     $('#ajax').empty();
-                    $('#ajax').html(result);
-            }
-        })
-        }
+                    $('#ajax').append(result);
+                    $('#ajax').show();
+                }
+        });
     });
-
 
 </script>
 </html>

@@ -36,18 +36,19 @@ include '../modules/sessionVariables.php';?>
                     $rating = $row['rating'];
                     $numberOfRatings = $row['numberofratings'];
                     ?>
-                    <div class="productWrapper" onclick="goToProductDetailWindow(<?php echo $id ?>)">
-                            <div class="heart">
-                                &#9825;
-                            </div>
-                            <div class="imagediv">
+                    <div class="productWrapper">
+                            <div class="imagediv hover:cursor-pointer" onclick="goToProductDetailWindow(<?php echo $id ?>)">
                                 <img class="listimage" src=<?php echo $image ?> alt="productimage" width="130" height="150">
                             </div>
                             <div class="infodiv">
-                                <p class="poppins-bold"><?php echo $name ?></p>
+                                <p class="poppins-bold hover:underline hover:cursor-pointer" onclick="goToProductDetailWindow(<?php echo $id ?>)"><?php echo $name ?></p>
                                 <div class="rating-numratings poppins-light">
                                     <p>€ <?php echo $price ?></p>
                                     <p class="star"><?php echo $rating ?></p>
+                                </div>
+                                <div class="flex flex-col justify-between gap-2">
+                                    <i class="fa fa-heart w-full p-3 rounded wishlistButton hover:cursor-pointer">&nbsp;<span class="poppns-regular">Add to wishlist</span></i>
+                                    <i class="fa fa-shopping-cart w-full p-3 rounded cartButton hover:cursor-pointer">&nbsp;<span class="poppns-regular">Add to cart</span></i>
                                 </div>
                             </div>
                         </div>
@@ -59,7 +60,7 @@ include '../modules/sessionVariables.php';?>
         <div class="line-between border border-1 border-dark"></div>
         <div class="most-sold-items">
             <div class="most-sold-header p-3 border border-solid border-2 w-fit rounded-xl ml-3">
-                <h1>MOST SOLD</h1>
+                <h1>TOP SELLING PRODUCTS</h1>
             </div>
             <div class="most-sold-products flex p-3 flex-wrap" style="gap: 20px;">
             <?php
@@ -75,18 +76,19 @@ include '../modules/sessionVariables.php';?>
                     $rating = $row['rating'];
                     $numberOfRatings = $row['numberofratings'];
                     ?>
-                    <div class="productWrapper" onclick="goToProductDetailWindow(<?php echo $id ?>)">
-                    <div class="heart">
-                                &#9825;
-                            </div>
-                            <div class="imagediv">
+                    <div class="productWrapper">
+                            <div class="imagediv hover:cursor-pointer" onclick="goToProductDetailWindow(<?php echo $id ?>)">
                                 <img class="listimage" src=<?php echo $image ?> alt="productimage" width="130" height="150">
                             </div>
                             <div class="infodiv">
-                                <p class="poppins-bold"><?php echo $name ?></p>
+                                <p class="poppins-bold hover:underline hover:cursor-pointer" onclick="goToProductDetailWindow(<?php echo $id ?>)"><?php echo $name ?></p>
                                 <div class="rating-numratings poppins-light">
                                     <p>€ <?php echo $price ?></p>
                                     <p class="star"><?php echo $rating ?></p>
+                                </div>
+                                <div class="flex flex-col justify-between gap-2">
+                                    <i class="fa fa-heart w-full p-3 rounded wishlistButton hover:cursor-pointer">&nbsp;<span class="poppns-regular">Add to wishlist</span></i>
+                                    <i class="fa fa-shopping-cart w-full p-3 rounded cartButton hover:cursor-pointer">&nbsp;<span class="poppns-regular">Add to cart</span></i>
                                 </div>
                             </div>
                         </div>
@@ -170,20 +172,6 @@ include '../modules/sessionVariables.php';?>
 </body>
 <?php include '../footer/footer.php';?>
 <script>
-    $('#filter').on("click", function(){
-        const rating = $('#sort-rating').val();
-        const checkboxes =  $('.checkbox:checked');
-        const sortRating = $('#sort-rating').val();
-        const sortPrice = $('#sort-price').val();
-        $.ajax({
-            url: "filterResults.php",
-            method:"POST",
-            data: $('form').serialize(),
-            success: function (result) {
-                $(".products").html(result);
-            }
-        });
-    });
 
     function goToProductDetailWindow(id){
         window.location.href = './product.php?id=' + id;

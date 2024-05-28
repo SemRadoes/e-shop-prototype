@@ -1,6 +1,5 @@
 
 footer{
+    position: relative;
     background-color: var(--reddish);
-    position: absolute;
-    bottom: 0;
 }

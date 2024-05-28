@@ -1,7 +1,7 @@
 
 .loginpage{
     gap: 50px;
-    background-color: var(--pinkish)
+    background-color: var(--beige)
 }
 .login, .register{
     height: fit-content;
@@ -20,14 +20,13 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
 
 .button{
     transition: all .3s ease;
-    background-color: var(--dark-blue);
+    background-color: var(--reddish);
 }
 
 .button:hover{
-    -webkit-box-shadow: 1px 1px 43px -6px rgba(154,200,205,1);
--moz-box-shadow: 1px 1px 43px -6px rgba(154,200,205,1);
-box-shadow: 1px 1px 43px -6px rgba(154,200,205,1);
+    box-shadow: 1px 1px 43px -6px var(--reddish);
 }
 input{
-    background-color: linear-gradient(rgb(151, 80, 80), rgba(255,255,225))
+    border: 2px solid var(--pinkish);
+    caret-color: var(--pinkish);
 }

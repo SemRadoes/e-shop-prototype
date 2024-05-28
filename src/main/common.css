@@ -14,3 +14,16 @@ a{
 a:hover{
     text-decoration: none;
 }
+
+.wishlistButton{
+    background-color: var(--pinkish);
+}
+.cartButton{
+    background-color: #bebebb;
+}
+.wishlistButton:hover{
+    background-color: var(--reddish);
+}
+.cartButton:hover{
+    background-color: #a5a39b;
+}
