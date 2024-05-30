@@ -1,28 +1,47 @@
 
 body{
-    margin: 0;
-    position: relative;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    background-color: var(--beige);
+    gap: 20px;
 }
 
 .main{
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 40px;
     padding: 20px
 }
 
+.banner{
+    height: 400px;
+    width: 100%;
+    background-image: url('../../images-mainpage/web-1012467_1920.jpg');
+}
 
+.sign-up-hesitate{
+    color: var(--brown);
+}
+.sign-label{
+    background: var(--reddish);
+    opacity: .7;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(5px);
+    color: white;
+    width:fit-content;
+}
+.sign-label:hover{
+    background-color: var(--pinkish);
+}
+.procent{
+    color: var(--brown);
+}
 .productWrapper{
-    position: relative;
     display: flex;
     justify-content: center;
     flex-direction: column;
-    width: 200px;
-    height: 450px;
+    height: fit-content;
+    width: 700px; 
     font-size: 10px;
     text-align: center;
     /* From https://css.glass */
@@ -63,16 +82,6 @@ border: 1px solid rgba(255, 255, 255, 0.3);
     color: goldenrod;
 }
 
-.buttons{
-    display:flex;
-    gap: 20px;
-}
-
-.right{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
 .listimage{
     height: 100%;
     width: 100%;
@@ -85,47 +94,4 @@ h1, h2, h3{
 .shop-by-category, .popular-header, .most-sold-header{
     border-color: var(--reddish);
     background-color: var(--pinkish);
-}
-.category-name{
-    color: var(--beige);
-}
-@media screen and (max-width: 700px){
-    body{
-        display:flex;
-        flex-direction: column;
-    }
-    .main{
-        display: flex;
-        flex-direction: column-reverse;
-        gap: 5px;
-    }
-    .top-products{
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-    }
-    .productWrapper{
-        flex-direction: row;
-        align-items: center;
-        width: 100%;
-        height: 350px;
-        gap: 5px;
-    }
-
-    .imagediv{
-        height: 350px;
-    }
-    .imagediv > img{
-        height: 350px;
-    }
-
-    .listimage{
-        width: 300px;
-        height: auto;
-    }
-
-    .rating-numratings{
-        display: flex;
-        justify-content: space-evenly;
-    }
 }

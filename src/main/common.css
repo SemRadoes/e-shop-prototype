@@ -6,6 +6,13 @@
     --reddish: #E85A50;
 }
 
+body{
+    background-color: var(--beige);
+    position: relative;
+    margin: 0;
+    padding-bottom: 80px;
+    min-height: 100vh;
+}
 
 a{
     text-decoration: none;

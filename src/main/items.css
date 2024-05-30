@@ -1,0 +1,9 @@
+.filterbutton{
+    background-color: var(--beige);
+    border-color: var(--brown);
+    transition:all .2s linear;
+}
+.filterbutton:hover{
+    background-color: var(--brown);
+    border-color: var(--brown);
+}

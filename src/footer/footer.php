@@ -1,4 +1,4 @@
-<footer class="flex items-center justify-center w-full text-white h-20">
+<footer class="flex items-center justify-center w-full text-white h-20 footer absolute bottom-0">
     &copy; &nbsp;<span id="year"></span>&nbsp; Copyright AWSEM web applications
 </footer>
 <script>
