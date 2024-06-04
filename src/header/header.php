@@ -10,11 +10,11 @@
         </div>
         <div class="col-span-3 flex justify-between items-center">
             <div class="search">
-                <input class="w-full p-2 rounded" type="text" placeholder="search">
+                <input name="search" class="w-full p-2 rounded" type="text" placeholder="search" id="search">
             </div>
                 <?php if(isset($user_id)){?>
-                    <div class="relative border-2 rounded p-2 dropdown">
-                        <div class="inline-flex items-center welcome-text" onclick="showDropdown()">
+                    <div class="relative border-2 rounded p-2 dropdown" onclick="showDropdown()">
+                        <div class="inline-flex items-center welcome-text">
                             Welcome, <?php echo $user_firstname ?> 
                             <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
@@ -67,4 +67,12 @@
     function showDropdown(){
         $('.hidden-dropdown').slideToggle(200);
     }
+    $(document).ready(() => {
+        $("#search").keydown(function(event) {
+            if (event.key === 'Enter') {
+                const searchValue = $('#search').val();
+                window.location.href = "../main/items.php?searchvalue=" + searchValue;
+            }
+        });
+    });
 </script>

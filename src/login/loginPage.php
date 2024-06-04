@@ -14,7 +14,7 @@
     <title>Login/register</title>
 </head>
 <body class="flex justify-center items-center h-screen md:h-fit w-screen loginpage poppins-regular text-white p-5">
-    <div class="flex flex-col justify-center login lg:w-2/5 w-4/5 <?php if($_GET['action'] == 'register'){ echo "hidden"; }?>">
+    <div class="flex flex-col justify-center login lg:w-2/5 w-4/5 <?php if(isset($_GET['action']) == 'register'){ echo "hidden"; }?>">
         <img src="../../logo/logo.JPG" alt="logo" class="rounded-xl">
         <form id="loginform" class="flex flex-col loginform text-black rounded-xl">
             <h1 class="lg:text-6xl text-3xl text-center">Login</h1>
@@ -56,7 +56,7 @@
             <h3 class="poppins-italic hover:cursor-pointer hover:text-red-500 gotoregister w-fit">No account? register here</h3>
         </form>
     </div>
-    <div class="flex flex-col justify-center register lg:w-2/5 w-4/5 hidden<?php if($_GET['action'] == 'register'){ echo "<script>$('.register').fadeIn();<script>";}?>">
+    <div class="flex flex-col justify-center register lg:w-2/5 w-4/5 hidden<?php if(isset($_GET['action']) == 'register'){ echo "<script>$('.register').fadeIn();<script>";}?>">
         <img src="../../logo/logo.JPG" alt="logo" class="rounded-xl">
         <form action="./register.php" method="POST" class="flex flex-col registerform text-black gap-3 rounded-xl">
             <h1 class="lg:text-6xl md:text-3xl text-xl text-center">Register</h1>

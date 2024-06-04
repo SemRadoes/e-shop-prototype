@@ -65,7 +65,6 @@
 
 .welcome-text{
     color: var(--brown);
-    cursor: pointer;
 }
 .welcome-text:hover{
     color: black;

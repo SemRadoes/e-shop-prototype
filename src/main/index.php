@@ -30,7 +30,7 @@ include '../modules/sessionVariables.php';?>
         <div class="popular-header p-3 border border-solid border-2 w-fit rounded-xl ml-3">
             <h1>TOP RATED</h1>
         </div>
-        <div class="popular-products flex gap-10 p-3 overflow-auto">
+        <div class="grid grid-cols-6 p-3 gap-2">
         <?php
             $query = "SELECT * FROM products ORDER BY rating DESC LIMIT 10;";
             $result = $conn->query($query); 
@@ -45,8 +45,8 @@ include '../modules/sessionVariables.php';?>
                 $numberOfRatings = $row['numberofratings'];
                 ?>
                 <div class="productWrapper">
-                        <div class="imagediv hover:cursor-pointer" onclick="goToProductDetailWindow(<?php echo $id ?>)">
-                            <img class="listimage" src=<?php echo $image ?> alt="productimage" width="150" height="150">
+                        <div class="imagediv hover:cursor-pointer flex justify-center" onclick="goToProductDetailWindow(<?php echo $id ?>)">
+                            <img class="listimage" src=<?php echo $image ?> alt="productimage">
                         </div>
                         <div class="infodiv">
                             <p class="poppins-bold hover:underline hover:cursor-pointer h-12 overflow-hidden" onclick="goToProductDetailWindow(<?php echo $id ?>)"><?php echo $name ?></p>
@@ -95,40 +95,40 @@ include '../modules/sessionVariables.php';?>
         <div class="most-sold-header p-3 border border-solid border-2 w-fit rounded-xl ml-3">
             <h1>OUR BESTSELLERS</h1>
         </div>
-        <div class="most-sold-products flex p-3 gap-10" >
-        <?php
-            $query = "SELECT * FROM products ORDER BY items_sold DESC LIMIT 10;";
-            $result = $conn->query($query); 
-            while($row = $result->fetch_assoc()){
-                $id = $row['id'];
-                $name = $row['name'];
-                $image = $row['image'];
-                $price = $row['price'];
-                $category = $row['category'];
-                $description = $row['description'];
-                $rating = $row['rating'];
-                $numberOfRatings = $row['numberofratings'];
+            <div class="grid grid-cols-6 p-3 gap-2" >
+            <?php
+                $query = "SELECT * FROM products ORDER BY items_sold DESC LIMIT 10;";
+                $result = $conn->query($query); 
+                while($row = $result->fetch_assoc()){
+                    $id = $row['id'];
+                    $name = $row['name'];
+                    $image = $row['image'];
+                    $price = $row['price'];
+                    $category = $row['category'];
+                    $description = $row['description'];
+                    $rating = $row['rating'];
+                    $numberOfRatings = $row['numberofratings'];
+                    ?>
+                    <div class="productWrapper">
+                            <div class="imagediv hover:cursor-pointer flex justify-center" onclick="goToProductDetailWindow(<?php echo $id ?>)">
+                                <img class="listimage" src=<?php echo $image ?> alt="productimage">
+                            </div>
+                            <div class="infodiv">
+                                <p class="poppins-bold hover:underline hover:cursor-pointer h-12 overflow-hidden" onclick="goToProductDetailWindow(<?php echo $id ?>)"><?php echo $name ?></p>
+                                <div class="rating-numratings poppins-light">
+                                    <p>€ <?php echo $price ?></p>
+                                    <p class="star"><?php echo $rating ?></p>
+                                </div>
+                                <div class="flex flex-col justify-between gap-2">
+                                    <i class="fa fa-heart w-full p-3 rounded wishlistButton hover:cursor-pointer">&nbsp;<span class="poppns-regular">Add to wishlist</span></i>
+                                    <i class="fa fa-shopping-cart w-full p-3 rounded cartButton hover:cursor-pointer">&nbsp;<span class="poppns-regular">Add to cart</span></i>
+                                </div>
+                            </div>
+                        </div>
+                        <?php
+                }
                 ?>
-                <div class="productWrapper">
-                        <div class="imagediv hover:cursor-pointer" onclick="goToProductDetailWindow(<?php echo $id ?>)">
-                            <img class="listimage" src=<?php echo $image ?> alt="productimage" width="130" height="150">
-                        </div>
-                        <div class="infodiv">
-                            <p class="poppins-bold hover:underline hover:cursor-pointer h-12 overflow-hidden" onclick="goToProductDetailWindow(<?php echo $id ?>)"><?php echo $name ?></p>
-                            <div class="rating-numratings poppins-light">
-                                <p>€ <?php echo $price ?></p>
-                                <p class="star"><?php echo $rating ?></p>
-                            </div>
-                            <div class="flex flex-col justify-between gap-2">
-                                <i class="fa fa-heart w-full p-3 rounded wishlistButton hover:cursor-pointer">&nbsp;<span class="poppns-regular">Add to wishlist</span></i>
-                                <i class="fa fa-shopping-cart w-full p-3 rounded cartButton hover:cursor-pointer">&nbsp;<span class="poppns-regular">Add to cart</span></i>
-                            </div>
-                        </div>
-                    </div>
-                    <?php
-            }
-            ?>
-        </div>
+            </div>
     </div>
     <?php include '../footer/footer.php';?>
 </body>
@@ -137,12 +137,11 @@ include '../modules/sessionVariables.php';?>
         window.location.href = './product.php?id=' + id;
     }
     function goToCategoryCatalog(id){
-        window.location.href = './product.php?id=' + id;
+        window.location.href = './items.php?categoryid=' + id;
     }
     function goToRegister(id){
         window.location.href = '../login/loginPage.php?action=register';
     }
-
     $( document ).ready(() => {
         $('#home-nav').addClass('home-nav');
     });

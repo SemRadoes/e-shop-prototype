@@ -19,8 +19,8 @@ include '../modules/sessionVariables.php';
 </head>
 <body>
     <?php include "../header/header.php";?>
-    <div class="main m-2 flex gap-2">
-        <form id="filters" class="flex flex-col gap-10 w-64">
+    <div class="main m-2 flex gap-5 p-5">
+        <form id="filters" class="flex flex-col gap-10">
             <div class="flex flex-col gap-1 w-inherit">
                 <p>Select a <strong>Category</strong></p>
                 <p class="border-b-2 border-slate-400"></p>
@@ -33,8 +33,8 @@ include '../modules/sessionVariables.php';
                 $category = $row['category'];
                 ?>
                     <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-                        <div class="flex items-center ps-3 w-full">
-                            <input id="list-radio-license<?php echo $id; ?>" type="checkbox" value="<?php echo $id; ?>" name="category-list[]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                        <div class="flex items-center ps-3 w-full hover:cursor-pointer">
+                            <input id="list-radio-license<?php echo $id; ?>" type="checkbox" <?php if(isset($_GET['categoryid']) == $id){ echo 'checked'; }?> value="<?php echo $id; ?>" name="category-list[]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                             <label for="list-radio-license<?php echo $id; ?>" class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"><?php echo $category; ?></label>
                         </div>
                     </li>
@@ -44,7 +44,7 @@ include '../modules/sessionVariables.php';
                 </ul>
             </div>
             <div class="flex flex-col gap-1 w-inherit">
-                <p>Select a <strong>price range</strong> (€)</p>
+                <p>Select a <strong>price range</strong> (€) <i class="fa fa-sort hover:cursor-pointer" id="pricesort" aria-hidden="true"></i></p>
                 <p class="border-b-2 border-slate-400"></p>
                 <div class="flex justify-between">
                     <input type="number" class="p-3 w-full border-2" name="minval">
@@ -52,13 +52,12 @@ include '../modules/sessionVariables.php';
                     <input type="number" class="p-3 w-full border-2" name="maxval">
                 </div>
             </div>
-            <div class="flex flex-col gap-1 w-inherit">
-                <p>Select <strong>Rating</strong></p>
+            <div class="flex flex-col gap-1 w-inherit hover:cursor-pointer">
+                <p>Select <strong>Rating</strong> <i class="fa fa-sort hover:cursor-pointer" id="ratingsort" aria-hidden="true"></i></p>
                 <p class="border-b-2 border-slate-400"></p>
                 <ul class="w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-                    <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-                        <div class="flex items-center ps-3 w-full">
-                            <input id="list-rating-license0" type="radio" value="0" name="list-rating[]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                    <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600 h-10 flex items-center p-1">
+                            <input id="list-rating-license0" type="radio" value="0" name="rating" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                             <label for="list-rating-license0" class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                                 <span style="font-size:120%;color:goldenrod;">&star;</span>
                                 <span style="font-size:120%;color:goldenrod;">&star;</span>
@@ -66,11 +65,9 @@ include '../modules/sessionVariables.php';
                                 <span style="font-size:120%;color:goldenrod;">&star;</span>
                                 <span style="font-size:120%;color:goldenrod;">&star;</span>
                             </label>
-                        </div>
                     </li>
-                    <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-                        <div class="flex items-center ps-3 w-full">
-                            <input id="list-rating-license1" type="radio" value="1" name="list-rating[]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                    <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600 h-10 flex items-center p-1">
+                            <input id="list-rating-license1" type="radio" value="1" name="rating" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                             <label for="list-rating-license1" class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                                 <span style="font-size:120%;color:goldenrod;">&starf;</span>
                                 <span style="font-size:120%;color:goldenrod;">&star;</span>
@@ -79,11 +76,9 @@ include '../modules/sessionVariables.php';
                                 <span style="font-size:120%;color:goldenrod;">&star;</span>
                                 <span>of meer</span>
                             </label>
-                        </div>
                     </li>
-                    <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-                        <div class="flex items-center ps-3 w-full">
-                            <input id="list-rating-license2" type="radio" value="2" name="list-rating[]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                    <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600 h-10 flex items-center p-1">
+                            <input id="list-rating-license2" type="radio" value="2" name="rating" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                             <label for="list-rating-license2" class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                                 <span style="font-size:120%;color:goldenrod;">&starf;</span>
                                 <span style="font-size:120%;color:goldenrod;">&starf;</span>
@@ -92,11 +87,9 @@ include '../modules/sessionVariables.php';
                                 <span style="font-size:120%;color:goldenrod;">&star;</span>
                                 <span>of meer</span>
                             </label>
-                        </div>
                     </li>
-                    <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-                        <div class="flex items-center ps-3 w-full">
-                            <input id="list-rating-license3" type="radio" value="3" name="list-rating[]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                    <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600 h-10 flex items-center p-1">
+                            <input id="list-rating-license3" type="radio" value="3" name="rating" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                             <label for="list-rating-license3" class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                                 <span style="font-size:120%;color:goldenrod;">&starf;</span>
                                 <span style="font-size:120%;color:goldenrod;">&starf;</span>
@@ -105,54 +98,127 @@ include '../modules/sessionVariables.php';
                                 <span style="font-size:120%;color:goldenrod;">&star;</span>
                                 <span>of meer</span>
                             </label>
-                        </div>
                     </li>
-                    <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-                        <div class="flex items-center ps-3 w-full">
-                            <input id="list-rating-license4" type="radio" value="4" name="list-radio[]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                            <label for="list-rating-license4" class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                                <span style="font-size:120%;color:goldenrod;">&starf;</span>
-                                <span style="font-size:120%;color:goldenrod;">&starf;</span>
-                                <span style="font-size:120%;color:goldenrod;">&starf;</span>
-                                <span style="font-size:120%;color:goldenrod;">&starf;</span>
-                                <span style="font-size:120%;color:goldenrod;">&star;</span>
-                                <span>of meer</span>
-                            </label>
-                        </div>
-                    </li>
-                    <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-                        <div class="flex items-center ps-3 w-full">
-                            <input id="list-rating-license5" type="radio" value="5" name="list-radio[]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                            <label for="list-rating-license5" class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                                <span style="font-size:120%;color:goldenrod;">&starf;</span>
-                                <span style="font-size:120%;color:goldenrod;">&starf;</span>
-                                <span style="font-size:120%;color:goldenrod;">&starf;</span>
-                                <span style="font-size:120%;color:goldenrod;">&starf;</span>
-                                <span style="font-size:120%;color:goldenrod;">&starf;</span>
-                            </label>
-                        </div>
+                    <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600 h-10 flex items-center p-1">
+                        <input id="list-rating-license4" type="radio" value="4" name="rating" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                        <label for="list-rating-license4" class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                            <span style="font-size:120%;color:goldenrod;">&starf;</span>
+                            <span style="font-size:120%;color:goldenrod;">&starf;</span>
+                            <span style="font-size:120%;color:goldenrod;">&starf;</span>
+                            <span style="font-size:120%;color:goldenrod;">&starf;</span>
+                            <span style="font-size:120%;color:goldenrod;">&star;</span>
+                            <span>of meer</span>
+                        </label>
+                    <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600 h-10 flex items-center p-1">
+                        <input id="list-rating-license5" type="radio" value="5" name="rating" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                        <label for="list-rating-license5" class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                            <span style="font-size:120%;color:goldenrod;">&starf;</span>
+                            <span style="font-size:120%;color:goldenrod;">&starf;</span>
+                            <span style="font-size:120%;color:goldenrod;">&starf;</span>
+                            <span style="font-size:120%;color:goldenrod;">&starf;</span>
+                            <span style="font-size:120%;color:goldenrod;">&starf;</span>
+                        </label>
                     </li>
                 </ul>
             </div>
-            <button type="submit" class="p-3 filterbutton border-2">Filter</button>
         </form>
-        <div class="grid grid-cols-5 gap-3" id="items-grid"></div>
+        <?php if(isset($_GET['categoryid'])){ 
+            $categoryitemid = $_GET['categoryid'];
+            ?>
+        <div id="categorygrid" class="grid grid-cols-6 p-3 gap-2" >
+        <?php
+            $query = "SELECT * FROM products WHERE category = '$categryitemid'";
+            $result = $conn->query($query); 
+            while($row = $result->fetch_assoc()){
+                $id = $row['id'];
+                $name = $row['name'];
+                $image = $row['image'];
+                $price = $row['price'];
+                $category = $row['category'];
+                $description = $row['description'];
+                $rating = $row['rating'];
+                $numberOfRatings = $row['numberofratings'];
+                ?>
+                <div class="productWrapper">
+                        <div class="imagediv hover:cursor-pointer flex justify-center" onclick="goToProductDetailWindow(<?php echo $id ?>)">
+                            <img class="listimage" src=<?php echo $image ?> alt="productimage">
+                        </div>
+                        <div class="infodiv">
+                            <p class="poppins-bold hover:underline hover:cursor-pointer h-12 overflow-hidden" onclick="goToProductDetailWindow(<?php echo $id ?>)"><?php echo $name ?></p>
+                            <div class="rating-numratings poppins-light">
+                                <p class="price poppins-bold">€ <?php echo $price ?></p>
+                                <p class="star"><?php echo $rating ?></p>
+                            </div>
+                            <div class="flex flex-col justify-between gap-2">
+                                <i class="fa fa-heart w-full p-3 rounded wishlistButton hover:cursor-pointer">&nbsp;<span class="poppns-regular">Add to wishlist</span></i>
+                                <i class="fa fa-shopping-cart w-full p-3 rounded cartButton hover:cursor-pointer">&nbsp;<span class="poppns-regular">Add to cart</span></i>
+                            </div>
+                        </div>
+                    </div>
+                    <?php
+            }
+            ?>
+        </div>
+        <?php } ?>
+        <?php if(isset($_GET['searchvalue'])){ 
+            $searchvalue = $_GET['searchvalue'];
+            ?>
+        <div id="categorygrid" class="grid grid-cols-6 p-3 gap-2" >
+        <?php
+            $query = "SELECT * FROM products WHERE name LIKE '%$searchvalue%'";
+            $result = $conn->query($query); 
+            while($row = $result->fetch_assoc()){
+                $id = $row['id'];
+                $name = $row['name'];
+                $image = $row['image'];
+                $price = $row['price'];
+                $category = $row['category'];
+                $description = $row['description'];
+                $rating = $row['rating'];
+                $numberOfRatings = $row['numberofratings'];
+                ?>
+                <div class="productWrapper">
+                        <div class="imagediv hover:cursor-pointer flex justify-center" onclick="goToProductDetailWindow(<?php echo $id ?>)">
+                            <img class="listimage" src=<?php echo $image ?> alt="productimage">
+                        </div>
+                        <div class="infodiv">
+                            <p class="poppins-bold hover:underline hover:cursor-pointer h-12 overflow-hidden" onclick="goToProductDetailWindow(<?php echo $id ?>)"><?php echo $name ?></p>
+                            <div class="rating-numratings poppins-light">
+                                <p class="price poppins-bold">€ <?php echo $price ?></p>
+                                <p class="star"><?php echo $rating ?></p>
+                            </div>
+                            <div class="flex flex-col justify-between gap-2">
+                                <i class="fa fa-heart w-full p-3 rounded wishlistButton hover:cursor-pointer">&nbsp;<span class="poppns-regular">Add to wishlist</span></i>
+                                <i class="fa fa-shopping-cart w-full p-3 rounded cartButton hover:cursor-pointer">&nbsp;<span class="poppns-regular">Add to cart</span></i>
+                            </div>
+                        </div>
+                    </div>
+                    <?php
+            }
+            ?>
+        </div>
+        <?php } ?>
+        <div class="grid grid-cols-6 p-3 gap-2" id="items-grid" style="display: none;"></div>
     </div>
     <?php include "../footer/footer.php";?>
 </body>
 <script>
-        $('#filters').on('submit', function (e) {
+        $('#filters').on('change', function (e) {
         e.preventDefault();
             $.ajax({
                 type: 'post',
                 url: 'getItems.php',
                 data: $('#filters').serialize(),
                 success: function (result) {
-                    $('#filters').empty();
-                    $('#filters').append(result);
-                    $('#filters').show();
+                    $('#items-grid').empty();
+                    $('#items-grid').html(result);
+                    $('#categorygrid').hide();
+                    $('#items-grid').fadeIn(500);
                 }
+            });
         });
-    });
+        function goToProductDetailWindow(id){
+            window.location.href = './product.php?id=' + id;
+        }
 </script>
 </html>
