@@ -2,25 +2,25 @@
 <?php session_start(); 
 
     include '../modules/sessionVariables.php';
-?>
-<header>
-    <div class="header grid grid-cols-4 grid-flow-col grid-rows-2 w-full p-3">
-        <div class="image row-span-3 flex justify-center items-center">
-            <a href="index.php"><img src="../../logo/logo.JPG" alt="logo"></a>
+
+echo '<header>
+    <div class="header grid grid-cols-4 grid-flow-col grid-rows-2 w-full gap-2">
+        <div class="row-span-3 flex justify-center items-center">
+            <a href="index.php"><img src="../../logo/logo.JPG" alt="logo" class="image"></a>
         </div>
         <div class="col-span-3 flex justify-between items-center">
             <div class="search">
                 <input name="search" class="w-full p-2 rounded" type="text" placeholder="search" id="search">
             </div>
-                <?php if(isset($user_id)){?>
-                    <div class="relative border-2 rounded p-2 dropdown" onclick="showDropdown()">
+                <?php if(isset('.$user_id.')){?>
+                    <div class="relative border-2 rounded p-3 hover:cursor-pointer dropdown" onclick="showDropdown()">
                         <div class="inline-flex items-center welcome-text">
-                            Welcome, <?php echo $user_firstname ?> 
+                            Welcome, '.$user_firstname.'
                             <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
                             </svg>
                         </div>
-                        <div class="flex flex-col text-xs absolute hidden hidden-dropdown rounded top-11">
+                        <div class="flex flex-col text-s absolute hidden hidden-dropdown rounded top-14 right-1">
                             <i class="fa fa-user fa-lg border-b-2 border-black p-2 w-full dropdown-items">&nbsp;Account</i>
                             <i class="fa fa-envelope fa-lg border-b-2 border-black p-2 w-full dropdown-items">&nbsp;Bestellingen</i>
                             <i class="fa fa-heart fa-lg border-b-2 border-black p-2 w-full dropdown-items">&nbsp;Wishlist</i>
@@ -36,25 +36,13 @@
                     </button> <?php } ?>
         </div>
         <div class="col-span-3 flex p-2 w-full items-center gap-3">
-            <div id="home-nav" onclick="goToHome()">
-                <h3 class="nav-item">HOME</h3>
-            </div>
-            <div id="home-nav" onclick="goToAbout()">
-                <h3 class="nav-item">ABOUT US</h3>
-            </div>
-            <div id="contact-nav" onclick="goToContact()">
-                <h3 class="nav-item">CONTACT</h3>
-            </div>
+            <h3 id="home-nav" class="nav-item" onclick="goToHome()">HOME</h3>
+            <h3 id="about-nav" class="nav-item" onclick="goToAbout()">ABOUT US</h3>
+            <h3 id="contact-nav" class="nav-item" onclick="goToContact()">CONTACT</h3>
         </div>
     </div>
 </header>
 <script>
-    function goToLoginPage(){
-        window.location.href = "../login/loginPage.php"
-    }
-    function goToLogoutPage(){
-        window.location.href = "../login/logout.php"
-    }
     function goToHome(){
         window.location.href = "../main/index.php"
     }
@@ -64,15 +52,18 @@
     function goToContact(){
         window.location.href = "../main/contact.php"
     }
+    function goToLoginPage(){
+        window.location.href = "../login/loginPage.php"
+    }
     function showDropdown(){
-        $('.hidden-dropdown').slideToggle(200);
+        $(".hidden-dropdown").slideToggle(200);
     }
     $(document).ready(() => {
         $("#search").keydown(function(event) {
-            if (event.key === 'Enter') {
-                const searchValue = $('#search').val();
+            if (event.key === "Enter") {
+                const searchValue = $("#search").val();
                 window.location.href = "../main/items.php?searchvalue=" + searchValue;
             }
         });
     });
-</script>
+</script>';

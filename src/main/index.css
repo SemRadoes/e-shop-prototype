@@ -1,17 +1,4 @@
 
-body{
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.main{
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    padding: 20px
-}
-
 .banner{
     height: 400px;
     width: 100%;
@@ -30,7 +17,7 @@ body{
     width:fit-content;
 }
 .sign-label:hover{
-    background-color: var(--pinkish);
+    background-color: #be4138;
 }
 .procent{
     color: var(--brown);
@@ -40,7 +27,7 @@ body{
     justify-content: center;
     flex-direction: column;
     height: fit-content;
-    width: auto; 
+    min-width: 250px;
     font-size: 10px;
     text-align: center;
     /* From https://css.glass */

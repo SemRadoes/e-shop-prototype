@@ -25,7 +25,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $userFirstName = $userInfo['firstname'];
         $userLastName = $userInfo['lastname'];
         $userEmail = $userInfo['email'];
-        $dbPassword = $userInfo['password'];
+        $dbPassword = $userInfo['pass'];
         if(password_verify($verifyPassword, $dbPassword)){
             echo '<div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-2 flex gap-3 items-center" id="loggedinnotifiction" role="alert">
                         <img src="../../icons/icons8-box-important-50.png" alt="warning-icon">

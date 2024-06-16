@@ -2,24 +2,43 @@
   header{
     position: sticky;
     top: 0;
-    height: auto;
+    height: fit-content;
     width: 100%;
-    box-shadow: 2px 2px 10px var(--reddish);
-    background-color: var(--reddish);
+    box-shadow: 2px 2px 10px var(--grey);
+    background-color: #5D0827;
     z-index: 2;
     padding-right: 5px;
 }
 
 .nav-item{
     padding: 10px;
-    color: var(--brown);
+    color: var(--reddish);
 }
 .nav-item:hover{
     cursor: pointer;
+    color: red;
+}
+.home-nav{
+    padding: 10px;
+    color: var(--reddish);
+    border: 2px solid var(--reddish);
+    border-radius: 5px;
+}
+.about-nav{
+    padding: 10px;
+    color: var(--reddish);
+    border: 2px solid var(--reddish);
+    border-radius: 5px;
+}
+.contact-nav{
+    padding: 10px;
+    color: var(--reddish);
+    border: 2px solid var(--reddish);
+    border-radius: 5px;
 }
 
 .image{
-    width: 50%;
+    width: 100%;
     height: auto;
 }
 .search{
@@ -32,25 +51,13 @@
 
 .login-button{
     border: 2px solid var(--reddish);
-    color: var(--brown);
+    color: var(--reddish);
     transition: all .2s ease;
 }
 
 .login-button:hover{
-    border: 2px solid var(--pinkish);
-}
-
-.home-nav{
-    border: 2px solid var(--brown);
-    border-radius: 5px;
-}
-.category-nav{
-    border: 2px solid var(--brown);
-    border-radius: 5px;
-}
-.contact-nav{
-    border: 2px solid var(--brown);
-    border-radius: 5px;
+    border: 2px solid red;
+    color: red;
 }
 
 .hidden-dropdown{
@@ -59,7 +66,7 @@
     
 }
 .dropdown-items:hover{
-    background-color: var(--pinkish);
+    background-color: var(--grey);
     cursor: pointer;
 }
 

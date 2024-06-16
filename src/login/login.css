@@ -30,3 +30,8 @@ input{
     border: 2px solid var(--pinkish);
     caret-color: var(--pinkish);
 }
+
+.eye{
+    border-color: var(--pinkish);
+    caret-color: var(--pinkish);
+}

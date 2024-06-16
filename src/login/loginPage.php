@@ -19,8 +19,14 @@
         <form id="loginform" class="flex flex-col loginform text-black rounded-xl">
             <h1 class="lg:text-6xl text-3xl text-center">Login</h1>
             <input type="email" name="email" id="loginemail" placeholder="email" class="p-2 rounded">
-            <input placeholder="password" id="loginpassword" name="password" class="p-2 rounded">
-            <input name="confirm-password" id="verifyloginpassword" placeholder="confirm password" class="p-2 rounded">
+            <div class="flex items-center">
+                <input placeholder="password" id="loginpassword" name="password" class="p-2 rounded-l w-11/12" type="password" >
+                <i class="fa fa-eye p-3 border-b-2 border-t-2 border-r-2 rounded-r eye w-1/12" aria-hidden="true"></i> 
+            </div>
+            <div class="flex items-center">
+                <input name="confirm-password" id="verifyloginpassword" placeholder="confirm password" class="p-2 rounded-l w-11/12" type="password">
+                <i class="fa fa-eye p-3 border-b-2 border-t-2 border-r-2 rounded-r eye w-1/12" aria-hidden="true"></i>
+            </div>
             <div id="passwordverifyerror" class="hidden">
                 <div class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-2 flex gap-3 items-center" role="alert">
                     <img src="../../icons/icons8-box-important-50.png" alt="warning-icon">
@@ -58,23 +64,24 @@
     </div>
     <div class="flex flex-col justify-center register lg:w-2/5 w-4/5 hidden<?php if(isset($_GET['action']) == 'register'){ echo "<script>$('.register').fadeIn();<script>";}?>">
         <img src="../../logo/logo.JPG" alt="logo" class="rounded-xl">
-        <form action="./register.php" method="POST" class="flex flex-col registerform text-black gap-3 rounded-xl">
+        <form id="registerform" class="flex flex-col registerform text-black gap-3 rounded-xl">
             <h1 class="lg:text-6xl md:text-3xl text-xl text-center">Register</h1>
             <div class="flex gap-3 lg:flex-row md:flex-col flex-col">
-                <input type="text" placeholder="first name" class="p-2 rounded w-full">
-                <input type="text" placeholder="last name" class="p-2 rounded w-full">
+                <input type="text" placeholder="first name*" name="firstname" class="p-2 rounded w-full">
+                <input type="text" placeholder="last name*"  name="lastname" class="p-2 rounded w-full">
             </div>
             <div class="flex gap-3 lg:flex-row md:flex-col flex-col">
-                <input type="text" placeholder="street" class="p-2 rounded w-full">
-                <input type="text" placeholder="housenumber" class="p-2 rounded w-full">
+                <input type="text" placeholder="street*"  name="street" class="p-2 rounded w-full">
+                <input type="text" placeholder="housenumber*"  name="housenumber" class="p-2 rounded w-full">
             </div>
             <div class="flex gap-3 lg:flex-row md:flex-col flex-col">
-                <input type="text" placeholder="city" class="p-2 rounded w-full">
-                <input type="text" placeholder="postal code" class="p-2 rounded w-full">
+                <input type="text" placeholder="city*"  name="city" class="p-2 rounded w-full">
+                <input type="text" placeholder="postal code*"  name="postalcode" class="p-2 rounded w-full">
             </div>
-            <input type="email" placeholder="email" class="p-2 rounded">
-            <input type="password" placeholder="password" class="p-2 rounded">
-            <input type="password" placeholder="confirm password" class="p-2 rounded">
+            <input type="email" placeholder="email*"  name="email" class="p-2 rounded">
+            <input type="password" placeholder="password*"  name="password" class="p-2 rounded" ><i class="fa fa-eye" aria-hidden="true"></i>
+            <input type="password" placeholder="confirm password*"  name="confirmpassword" class="p-2 rounded"><i class="fa fa-eye" aria-hidden="true"></i>
+            <div id="registerrors" class="hidden"></div>
             <button  type="submit" id="register" class="p-2 rounded button text-white">Register</button>
             <h3 class="poppins-italic hover:cursor-pointer hover:text-red-500 gotologin w-fit">Aready have an account? log in here</h3>
         </form>
@@ -103,6 +110,19 @@
                     $('#ajax').empty();
                     $('#ajax').append(result);
                     $('#ajax').show();
+                }
+        });
+    });
+    $('#registerform').on('submit', function (e) {
+        e.preventDefault();
+            $.ajax({
+                type: 'post',
+                url: 'register.php',
+                data: $('#registerform').serialize(),
+                success: function (result) {
+                    $('#registerrors').empty();
+                    $('#registerrors').append(result);
+                    $('#registerrors').show();
                 }
         });
     });

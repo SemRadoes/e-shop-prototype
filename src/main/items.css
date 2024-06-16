@@ -1,20 +1,10 @@
-#categorygrid, #items-grid{
-    width: 80%;
-}
-
-#filters{
-    width: 20%;
-}
-
 .productWrapper{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    height: fit-content;
-    width: auto; 
-    font-size: 10px;
-    text-align: center;
-    /* From https://css.glass */
+display: flex;
+height: fit-content; 
+padding: 20px;
+font-size: 10px;
+text-align: center;
+/* From https://css.glass */
 background: rgba(255, 255, 255, 0.5);
 border-radius: 16px;
 box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -24,39 +14,61 @@ border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .imagediv{
-    text-align: center;
-    height: 160px;
-    width: 100%;
-    border-radius: 10px;
+text-align: center;
+height: 160px;
+border-radius: 10px;
+width: 400px;
 }
 .listimage{
     height: 160px;
-    width: auto;
-    border-radius: 10px;
+width: auto;
+border-radius: 10px;
 }
 .infodiv{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    height: inherit;
     padding: 10px;
     font-size: 1rem;
     height: inherit;
-}
-.rating-numratings{
-    display: flex;
-    justify-content: space-between;
-    padding: 5px;
-    font-size: large;
-}
-.star::before{
-    content: "★";
-    font-size: large;
-    color: goldenrod;
+    }
+    .rating-numratings{
+        display: flex;
+        justify-content: space-between;
+        padding: 5px;
+        font-size: large;
+        }
+        .star::before{
+            content: "★";
+            font-size: large;
+            color: goldenrod;
 }
 .star{
     color: goldenrod;
-}
-
+    }
+    
 .price{
     color: var(--reddish);
+    }
+@media only screen and (max-width: 768px){
+    .productWrapper{
+        height: fit-content;
+        flex-direction: column;
+    }
+    .imagediv{
+        height: 160px;
+        width: 100%;
+        border-radius: 10px;
+    }
+    .listimage{
+        height: 160px;
+        width: auto;
+        border-radius: 10px;
+    }
+    #filters{
+        width: 100%;
+    }
+    .main{
+        flex-direction: column;
+    }
 }
