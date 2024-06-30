@@ -17,12 +17,10 @@ include '../modules/sessionVariables.php';?>
     <title>Aws3mwebshop</title>
 </head>
 <body class="poppins-normal">
-    <div id="header">
-
-    </div>
+    <?php include '../header/header.php'?>
     <div class="header-banner">
-        <div class="banner lg:flex md:flex sm:flex-col lg:justify-around md:justify-around sm:justify-around items-center">
-            <h1 class="lg:text-9xl mg:text-6xl text-3xl lg:flex md:flex sm:flex-col justify-center items-center text-center gap-5 procent">50% OFF <span class="text-4xl">EVERYTHING!</span></h1>
+        <div class="banner lg:flex md:flex flex-col items-center justify-around">
+            <h1 class="lg:text-9xl mg:text-6xl text-3xl lg:flex md:flex sm:flex-col justify-center items-center text-center gap-5 procent">50% OFF</h1>
             <div class="sign-up flex flex-col justify-center items-center gap-10">
                 <h1 class="text-7xl sign-up-hesitate text-center">Don't hesitate!</h1>
                 <button class="text-4xl p-3 sign-label" onclick="goToRegister()">Register Now</button>
@@ -142,26 +140,7 @@ include '../modules/sessionVariables.php';?>
     $( document ).ready(() => {
         $('#home-nav').removeClass('nav-item');
         $('#home-nav').addClass('home-nav');
-
     });
-    if( $(window).width() < 769 ){
-        $.ajax({
-            url: '../header/header-mobile.php',
-            success: function (result) {
-                $('#header').empty();
-                $('#header').append(result);
-                $('#header').show();
-            }
-    });
-    } else {
-        $.ajax({
-            url: '../header/header.php',
-            success: function (result) {
-                $('#header').empty();
-                $('#header').append(result);
-                $('#header').show();
-            }
-    });
-    }
+    
 </script>
 </html>

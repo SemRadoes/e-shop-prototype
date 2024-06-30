@@ -15,17 +15,17 @@
 </head>
 <body class="flex justify-center items-center h-screen md:h-fit w-screen loginpage poppins-regular text-white p-5">
     <div class="flex flex-col justify-center login lg:w-2/5 w-4/5 <?php if(isset($_GET['action']) == 'register'){ echo "hidden"; }?>">
-        <img src="../../logo/logo.JPG" alt="logo" class="rounded-xl">
-        <form id="loginform" class="flex flex-col loginform text-black rounded-xl">
+        <img src="../../logo/logo.JPG" alt="logo" class="rounded-t-xl">
+        <form id="loginform" class="flex flex-col loginform text-black rounded-b-xl">
             <h1 class="lg:text-6xl text-3xl text-center">Login</h1>
             <input type="email" name="email" id="loginemail" placeholder="email" class="p-2 rounded">
-            <div class="flex items-center">
+            <div class="flex items-center justify-center">
                 <input placeholder="password" id="loginpassword" name="password" class="p-2 rounded-l w-11/12" type="password" >
-                <i class="fa fa-eye p-3 border-b-2 border-t-2 border-r-2 rounded-r eye w-1/12" aria-hidden="true"></i> 
+                <i class="fa fa-eye-slash p-3  rounded-r eye w-1/12 hover:cursor-pointer" aria-hidden="true" id="logineye" onclick="showPassword('loginpassword', 'logineye')"></i> 
             </div>
-            <div class="flex items-center">
+            <div class="flex items-center justify-center">
                 <input name="confirm-password" id="verifyloginpassword" placeholder="confirm password" class="p-2 rounded-l w-11/12" type="password">
-                <i class="fa fa-eye p-3 border-b-2 border-t-2 border-r-2 rounded-r eye w-1/12" aria-hidden="true"></i>
+                <i class="fa fa-eye-slash p-3  rounded-r eye w-1/12 hover:cursor-pointer" aria-hidden="true" id="loginverifyeye" onclick="showPassword('verifyloginpassword', 'loginverifyeye')"></i>
             </div>
             <div id="passwordverifyerror" class="hidden">
                 <div class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-2 flex gap-3 items-center" role="alert">
@@ -62,9 +62,9 @@
             <h3 class="poppins-italic hover:cursor-pointer hover:text-red-500 gotoregister w-fit">No account? register here</h3>
         </form>
     </div>
-    <div class="flex flex-col justify-center register lg:w-2/5 w-4/5 hidden<?php if(isset($_GET['action']) == 'register'){ echo "<script>$('.register').fadeIn();<script>";}?>">
-        <img src="../../logo/logo.JPG" alt="logo" class="rounded-xl">
-        <form id="registerform" class="flex flex-col registerform text-black gap-3 rounded-xl">
+    <div class="flex flex-col justify-center register lg:w-2/5 w-4/5 hidden"><?php if(isset($_GET['action']) == 'register'){ echo "<script>$('.register').fadeIn();<script>";}?>
+        <img src="../../logo/logo.JPG" alt="logo" class="rounded-t-xl">
+        <form id="registerform" class="flex flex-col registerform text-black gap-3 rounded-b-xl">
             <h1 class="lg:text-6xl md:text-3xl text-xl text-center">Register</h1>
             <div class="flex gap-3 lg:flex-row md:flex-col flex-col">
                 <input type="text" placeholder="first name*" name="firstname" class="p-2 rounded w-full">
@@ -79,8 +79,14 @@
                 <input type="text" placeholder="postal code*"  name="postalcode" class="p-2 rounded w-full">
             </div>
             <input type="email" placeholder="email*"  name="email" class="p-2 rounded">
-            <input type="password" placeholder="password*"  name="password" class="p-2 rounded" ><i class="fa fa-eye" aria-hidden="true"></i>
-            <input type="password" placeholder="confirm password*"  name="confirmpassword" class="p-2 rounded"><i class="fa fa-eye" aria-hidden="true"></i>
+            <div class="flex items-center">
+                <input placeholder="password" name="password" class="p-2 rounded-l w-11/12" type="password" id="registerpassword">
+                <i class="fa fa-eye-slash p-3  rounded-r eye w-1/12 hover:cursor-pointer" id="registereye" aria-hidden="true" onclick="showPassword('registerpassword', 'registereye')"></i> 
+            </div>
+            <div class="flex items-center">
+                <input name="confirm-password" placeholder="confirm password" class="p-2 rounded-l w-11/12" type="password" id="verifyregisterpassword">
+                <i class="fa fa-eye-slash p-3  rounded-r eye w-1/12 hover:cursor-pointer" id="registerverifyeye" aria-hidden="true" onclick="showPassword('verifyregisterpassword', 'registerverifyeye')"></i>
+            </div>
             <div id="registerrors" class="hidden"></div>
             <button  type="submit" id="register" class="p-2 rounded button text-white">Register</button>
             <h3 class="poppins-italic hover:cursor-pointer hover:text-red-500 gotologin w-fit">Aready have an account? log in here</h3>
@@ -126,7 +132,19 @@
                 }
         });
     });
-
+    function showPassword(password, eye){
+        const inputfield = $(`#${password}`);
+        const eyefield = $(`#${eye}`);
+        if(inputfield.attr('type') === "password"){
+            inputfield.attr('type', 'text');
+            eyefield.removeClass('fa-eye-slash');
+            eyefield.addClass('fa-eye');
+        } else {
+            inputfield.attr('type', 'password');
+            eyefield.removeClass('fa-eye');
+            eyefield.addClass('fa-eye-slash');
+        }
+    }
 </script>
 
 </html>

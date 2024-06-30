@@ -180,7 +180,7 @@ include '../modules/sessionVariables.php';
         <?php if(isset($_GET['searchvalue'])){
             $searchvalue = $_GET['searchvalue'];
             ?>
-        <div id="categorygrid" class="grid lg:grid-cols-6 md:grid-cols-3 grid-cols-1 p-3 gap-2" >
+        <div id="categorygrid" class="grid grid-cols-1 w-full p-3 gap-1" >
         <?php
             $query = "SELECT * FROM products WHERE name LIKE '%$searchvalue%'";
             $result = $conn->query($query);
@@ -198,8 +198,8 @@ include '../modules/sessionVariables.php';
                         <div class="imagediv hover:cursor-pointer flex justify-center" onclick="goToProductDetailWindow(<?php echo $id ?>)">
                             <img class="listimage" src=<?php echo $image ?> alt="productimage">
                         </div>
-                        <div class="flex flex-col gap-2 p-3 grow">
-                            <p class="poppins-bold hover:underline hover:cursor-pointer h-12 overflow-hidden" onclick="goToProductDetailWindow(<?php echo $id ?>)"><?php echo $name ?></p>
+                        <div class="flex flex-col  gap-2 p-3 grow">
+                            <p class="poppins-bold hover:underline hover:cursor-pointer h-5 overflow-hidden" onclick="goToProductDetailWindow(<?php echo $id ?>)"><?php echo $name ?></p>
                             <p class="star"><?php echo $rating ?>&nbsp;&nbsp;<span>(<?php echo $numberOfRatings ?>)</span></p>
                             <p><?php echo $description ?></p>
                         </div>

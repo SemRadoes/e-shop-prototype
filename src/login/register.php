@@ -10,7 +10,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $postcode = htmlspecialchars($_POST['postalcode']);
     $email = htmlspecialchars($_POST['email']);
     $password = htmlspecialchars($_POST['password']);
-    $verifyPassword = htmlspecialchars($_POST['confirmpassword']);
+    $verifyPassword = htmlspecialchars($_POST['confirm-password']);
     if($firstName == "" and $lastName == "" and $street == "" and $houseNumber == "" and $stad == "" and $postcode == "" and $email == "" and $password == "" and $verifyPassword == ""){
         echo "<div class='bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-2 flex gap-3 items-center' role='alert'>
                     <img src='../../icons/icons8-box-important-50.png' alt='warning-icon'>

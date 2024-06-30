@@ -22,7 +22,6 @@ $numberofratings = $productInfo['numberofratings'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php include '../modules/head.php';?>
     <link rel="stylesheet" stylesheet="text/css" href="common.css">
-    <link href="../main/common.css" rel="stylesheet" stylesheet="text/css">
     <link href="../header/header.css" rel="stylesheet" stylesheet="text/css">
     <link href="../footer/footer.css" rel="stylesheet" stylesheet="text/css">
     <link href="../fonts/fonts.css" rel="stylesheet" stylesheet="text/css">
@@ -34,7 +33,7 @@ $numberofratings = $productInfo['numberofratings'];
     <?php include '../header/header.php'?>
     <div id="product-head" class="flex justify-center content-center gap-20 h-fit p-5">
         <img src=<?php echo $image;?> alt="productimage" width="600px" haight="auto">
-        <div id="product-info" class="flex flex-col gap-5 justify-center w-96 p-5">
+        <div id="product-info" class="flex flex-col gap-5 w-96 p-5">
             <div class="flex content-center">
                 <?php if($rating < 2){?>
                     <span>&#9733;&#9734;&#9734;&#9734;&#9734;</span>
@@ -52,12 +51,39 @@ $numberofratings = $productInfo['numberofratings'];
             <div class="poppins-bold"><?php echo $name;?></div>
             <div><?php echo $description;?></div>
             <div>€ <?php echo $price;?></div>
+            <label for="quantity">How many?</label>
+            <input type="number" id="quantity" class="w-20 p-3" min="1" value="1">
             <div class="flex justify-between gap-2">
-                <i class="fa fa-heart w-full p-3 rounded wishlistButton hover:cursor-pointer">&nbsp;<span class="poppns-regular">Add to wishlist</span></i>
-                <i class="fa fa-shopping-cart w-full p-3 rounded cartButton hover:cursor-pointer">&nbsp;<span class="poppns-regular">Add to cart</span></i>
+                <i class="fa fa-heart w-full p-3 rounded wishlistButton hover:cursor-pointer">&nbsp;<span class="poppns-regular" onclick="addToWishlist($productID, $user_id)">Add to wishlist</span></i>
+                <i class="fa fa-shopping-cart w-full p-3 rounded cartButton hover:cursor-pointer">&nbsp;<span class="poppns-regular" onclick="addToCart($productID, $user_id)">Add to cart</span></i>
             </div>
         </div>
     </div>
     <?php include '../footer/footer.php'?>
 </body>
+<script>
+    function goToProductDetailWindow(id){
+        window.location.href = './product.php?id=' + id;
+    }
+    function addToWishlist(id){
+        const quantity = $('#quantity').val();
+        $.ajax({
+                type: 'get',
+                url: '../modules/addToWishlist.php?id=' + id + 'quantity=' + quantity,
+                success: function (result) {
+                    alert(result);
+                }
+            });
+    }
+    function addToCart(id){
+        const quantity = $('#quantity').val();
+        $.ajax({
+                type: 'get',
+                url: '../modules/addToCart.php?id=' + id + 'quantity=' + quantity,
+                success: function (result) {
+                    alert(result);
+                }
+            });
+    }
+</script>
 </html>

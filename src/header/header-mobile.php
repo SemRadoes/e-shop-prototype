@@ -1,7 +1,7 @@
 
 <?php session_start(); 
-    include '../modules/sessionVariables.php';
-echo '<header>
+    include '../modules/sessionVariables.php';?>
+<header>
     <div class="grid grid-cols-3 grid-rows-2 w-full gap-2">
         <div class="flex justify-center items-center">
             <a href="index.php"><img src="../../logo/logo.JPG" alt="logo"></a>
@@ -17,8 +17,8 @@ echo '<header>
                     <i class="fa fa-heart fa-lg border-b-2 border-black p-2 w-full dropdown-items">&nbsp;Wishlist</i>
                     <i class="fa fa-shopping-cart fa-lg border-b-2 border-black p-2 w-full dropdown-items">&nbsp;Cart</i>
                     <i class="fa fa-sign-out fa-lg  p-2 w-full dropdown-items" onclick="goToLogoutPage()">&nbsp;uitloggen</i>
-                    <i class="fa fa-sign-out fa-lg  p-2 w-full dropdown-items" onclick="goToLogoutPage()">&nbsp;ABOUT US</i>
-                    <i class="fa fa-sign-out fa-lg  p-2 w-full dropdown-items" onclick="goToLogoutPage()">&nbsp;CONTACT</i>
+                    <i class="fa fa-sign-out fa-lg  p-2 w-full dropdown-items" onclick="goToAbout()">&nbsp;ABOUT US</i>
+                    <i class="fa fa-sign-out fa-lg  p-2 w-full dropdown-items" onclick="goToContact()">&nbsp;CONTACT</i>
                 </div>
             </div>
         </div>
@@ -48,4 +48,4 @@ echo '<header>
             }
         });
     });
-</script>';
+</script>;

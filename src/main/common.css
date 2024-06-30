@@ -37,3 +37,61 @@ a:hover{
 .cartButton:hover{
     background-color: #a5a39b;
 }
+
+.productWrapper{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: fit-content;
+    min-width: 250px;
+    font-size: 10px;
+    text-align: center;
+    /* From https://css.glass */
+background: rgba(255, 255, 255, 0.5);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5px);
+-webkit-backdrop-filter: blur(5px);
+border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.imagediv{
+    text-align: center;
+    height: 160px;
+    width: 100%;
+    border-radius: 10px;
+}
+.listimage{
+    height: 160px;
+    width: auto;
+    border-radius: 10px;
+}
+.infodiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+    font-size: 1rem;
+    height: inherit;
+}
+.rating-numratings{
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    font-size: large;
+}
+.star::before{
+    content: "★";
+    font-size: large;
+    color: goldenrod;
+}
+.star{
+    color: goldenrod;
+}
+h1, h2, h3{
+    color: var(--beige);
+}
+.shop-by-category, .popular-header, .most-sold-header{
+    border-color: var(--reddish);
+    background-color: var(--pinkish);
+}

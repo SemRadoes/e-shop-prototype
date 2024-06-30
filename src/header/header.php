@@ -2,8 +2,8 @@
 <?php session_start(); 
 
     include '../modules/sessionVariables.php';
-
-echo '<header>
+?>
+<header>
     <div class="header grid grid-cols-4 grid-flow-col grid-rows-2 w-full gap-2">
         <div class="row-span-3 flex justify-center items-center">
             <a href="index.php"><img src="../../logo/logo.JPG" alt="logo" class="image"></a>
@@ -12,10 +12,10 @@ echo '<header>
             <div class="search">
                 <input name="search" class="w-full p-2 rounded" type="text" placeholder="search" id="search">
             </div>
-                <?php if(isset('.$user_id.')){?>
+                <?php if(isset($user_id)){?>
                     <div class="relative border-2 rounded p-3 hover:cursor-pointer dropdown" onclick="showDropdown()">
                         <div class="inline-flex items-center welcome-text">
-                            Welcome, '.$user_firstname.'
+                            Welcome, <?php echo $user_firstname;?>
                             <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
                             </svg>
@@ -66,4 +66,4 @@ echo '<header>
             }
         });
     });
-</script>';
+</script>
